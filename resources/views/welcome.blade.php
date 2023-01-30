@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="jumbotron text-right">
+    <div class="starter text-end">
         <h1>This is Potapov Alexey's blog!</h1>
 
         <p class="lead">

@@ -1,0 +1,19 @@
+body{
+    background: url('../img/bg.gif') repeat-x #303030;
+}
+
+.starter{
+    background: url(../img/mainimage.jpg) no-repeat;
+    background-size: cover;
+    min-height: 300px;
+}
+
+.album_face {
+    width: 100%;
+    display: block;
+    min-height: 150px;
+    background-size: cover;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.0));
+}

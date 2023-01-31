@@ -8,7 +8,7 @@
     <meta name="author" content="Sheikh Heera"/>
 
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} - {{$pageTitle ?? ''}}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Styles -->
@@ -18,49 +18,47 @@
 </head>
 <body class="antialiased">
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar w/ text</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                </ul>
-                <span class="navbar-text">
-        Navbar text with an inline element
-      </span>
-            </div>
-        </div>
-    </nav>
     <div class="row header">
-        <div class="col-sm-4 hidden-xs">
+        <div class="col-sm-4 d-none d-sm-block">
             <a href="/"> <img src="/img/logo.jpg"></a>
         </div>
-        <div class="col-sm-8 menu">
-            <div class="language hidden-xs">
-                <a class="active" href="/ru/post/48">RU</a>
-                <a class="" href="/en/post/48">EN</a>
+        <div class="col-sm-8">
+            <div class="language d-none text-end">
+                <a class="active" href="/ru">RU</a>
+                <a class="" href="/en">EN</a>
             </div>
             <div class="row">
-                <div>
-                    <a href="/">home</a>
-                    <a href="/news">news</a>
-                    <a href="/blog">blog</a>
-                    <a href="/photo">photo</a>
-                    <a href="/resume">resume</a>
-                    <a href="/music">music</a>
-                    <a href="/video">video</a>
-                </div>
+                <nav class="navbar navbar-expand-sm navbar-dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand d-block d-sm-none" href="#">POTAPOV</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/news">News</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog">Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/photo">Photo</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/music">Music</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/video">Video</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/resume">Resume</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
         </div>
     </div>
@@ -69,6 +67,10 @@
         @yield('content')
     </div>
 </div>
-
+<footer class="footer">
+    <div class="container text-end">
+        <p>&copy; a-potap <?= date('Y') ?></p>
+    </div>
+</footer>
 </body>
 </html>

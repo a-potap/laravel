@@ -6,11 +6,11 @@ $white:    #fff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
+$gray-400: #cccccc !default;
 $gray-500: #adb5bd !default;
 $gray-600: #6c757d !default;
 $gray-700: #495057 !default;
-$gray-800: #343a40 !default;
+$gray-800: #303030 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 // scss-docs-end gray-color-variables
@@ -93,10 +93,52 @@ $container-max-widths: (
 );
 
 // Body
-$body-bg: #303030;
-$body-color: $white !default;
+$body-bg: $gray-800;
+$body-color: $gray-400 !default;
 
 // Typography
 $font-family-sans-serif: Arial, Verdana, Helvetica, sans-serif;
-$font-size-base: 0.9rem;
+$font-size-base: 1rem;
 $line-height-base: 1.6;
+
+// Links
+//
+// Style anchor elements.
+
+$link-color:                              $primary !default;
+$link-decoration:                         none !default;
+$link-shade-percentage:                   20% !default;
+$link-hover-color:                        shift-color($link-color, $link-shade-percentage) !default;
+$link-hover-decoration:                   null !default;
+
+$stretched-link-pseudo-element:           after !default;
+$stretched-link-z-index:                  1 !default;
+
+//NavBar
+$navbar-dark-color:                 $white;
+$navbar-dark-hover-color:           $white;
+$navbar-dark-active-color:          $white;
+$navbar-dark-disabled-color:        rgba($white, .25);
+$navbar-dark-toggler-border-color:  rgba($white, .1);
+
+//Pagination
+$pagination-color:                  $link-color;
+$pagination-bg:                     $gray-800;
+$pagination-border-color:           $gray-800;
+
+
+$pagination-focus-color:            $link-hover-color !default;
+$pagination-focus-bg:               $white !default;
+$pagination-focus-outline:          0 !default;
+
+$pagination-hover-color:            $gray-600 !default;
+$pagination-hover-bg:               $white !default;
+$pagination-hover-border-color:     $white !default;
+
+$pagination-active-color:           $dark !default;
+$pagination-active-bg:              $white !default;
+$pagination-active-border-color:    $white !default;
+
+$pagination-disabled-color:         $gray-600 !default;
+$pagination-disabled-bg:            $gray-800 !default;
+$pagination-disabled-border-color:  $gray-800 !default;

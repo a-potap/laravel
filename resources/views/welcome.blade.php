@@ -42,7 +42,17 @@
             <h2>News</h2>
 
             <div class="news">
+                @foreach ($news as $item)
+                    <div class="row">
+                        <div class="col-12">
+                            <i>{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</i>
+                            <p>
+                                {!! $item->text !!}
+                            </p>
+                        </div>
 
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

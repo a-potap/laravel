@@ -2,10 +2,20 @@ body{
     background: url('../img/bg.gif') repeat-x #303030;
 }
 
+.header{
+    margin-bottom: 20px;
+}
+
 .starter{
     background: url(../img/mainimage.jpg) no-repeat;
     background-size: cover;
     min-height: 300px;
+    border: 7px solid #fff;
+    border-radius: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 30px;
+    margin: 20px auto;
 }
 
 .album_face {
@@ -16,4 +26,17 @@ body{
     padding: 10px;
     margin-bottom: 15px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.0));
+}
+
+.language{
+    padding: 40px 10px 10px;
+}
+
+.comments{
+    padding-top: 30px;
+}
+
+.footer {
+    padding-top: 45px;
+    padding-bottom: 15px;
 }

@@ -1,37 +1,22 @@
+@php
+    $pageTitle = 'News';
+@endphp
+
 @extends('index')
 
 @section('content')
+    <h1>{{$pageTitle}}</h1>
+    @foreach ($news as $item)
+        <div class="row">
+            <div class="col-12">
+                <a href="{{url('news', $item->id)}}">{{ $item->date }}</a>
+                <p>
+                    {!! $item->text !!}
+                </p>
+            </div>
 
-    <table class="table table-bordered">
-        <tr>
-            <th>No</th>
-            <th>Date</th>
-            <th>Content</th>
-            <th>Content EN</th>
-            <th width="280px">Action</th>
-        </tr>
-        @foreach ($news as $item)
-            <tr>
-                <td>{{ ++$i }}</td>
-                <td>{{ $item->date }}</td>
-                <td>{{ $item->text }}</td>
-                <td>{{ $item->text_en }}</td>
-                <td>
-                    <form action="{{ route('news.destroy',$item->id) }}" method="POST">
-
-                        <a class="btn btn-info" href="{{ route('news.show',$item->id) }}">Show</a>
-
-                        <a class="btn btn-primary" href="{{ route('news.edit',$item->id) }}">Edit</a>
-
-                        @csrf
-                        @method('DELETE')
-
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </table>
+        </div>
+    @endforeach
 
     {!! $news->links() !!}
 

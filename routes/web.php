@@ -23,4 +23,6 @@ Route::get('/post/{blog}', function (\App\Models\Blog $blog) {
     return view('blog.show',compact('blog'));
 });
 
-Route::resource('photo', \App\Http\Controllers\PhotoController::class);
+
+Route::get('photo', [\App\Http\Controllers\PhotoController::class, 'index']);
+Route::get('photo/{albumId}', [\App\Http\Controllers\PhotoController::class, 'show']);

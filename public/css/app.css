@@ -38,6 +38,10 @@ body {
   padding-top: 30px;
 }
 
+.album_face {
+  color: #fff;
+}
+
 .footer {
   padding-top: 45px;
   padding-bottom: 15px;

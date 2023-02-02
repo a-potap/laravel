@@ -14,7 +14,10 @@
 
     <div class="row">
         <div class="col-12">
-            {!! $news->text !!}
+            <p>
+                <i>{{ \Carbon\Carbon::parse($news->date)->format('d/m/Y') }}</i><br>
+                {!! $news->text !!}
+            </p>
         </div>
     </div>
 @endsection

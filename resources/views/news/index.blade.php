@@ -1,5 +1,5 @@
 @php
-    $pageTitle = 'News';
+    $pageTitle = __('common.news');
 @endphp
 
 @extends('index')
@@ -11,7 +11,7 @@
             <div class="col-12">
                 <a href="{{url('news', $item->id)}}">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</a>
                 <p>
-                    {!! $item->text !!}
+                    {!! $item->getLocalizedText() !!}
                 </p>
             </div>
 

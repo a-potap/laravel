@@ -1,5 +1,5 @@
 @php
-    $pageTitle = 'Blog';
+    $pageTitle = __('common.blog');
 @endphp
 
 @extends('index')
@@ -8,8 +8,7 @@
     <h1>{{$pageTitle}}</h1>
     <div class="row">
         <div class="col-10">
-            <h2> {{ $blog->title }}</h2>
-
+            <h2> {{ $blog->getLocalizedTitle() }}</h2>
         </div>
         <div class="col-2 text-end">
             <a class="btn btn-primary" href="{{ route('blog.index') }}"> Back</a>
@@ -19,13 +18,13 @@
     <div class="row">
         <div class="col-12">
             <strong>{{ $blog->date }}</strong> <br>
-            {!! $blog->text !!}
+            {!! $blog->getLocalizedText() !!}
         </div>
     </div>
 
 
     <div class="comments">
-        <strong>Comments:</strong>
+        <strong>{{__('blog.comments')}}:</strong>
         @foreach ($blog->comments as $comment)
             <div class="row">
                 <div class="col-11 offset-1">

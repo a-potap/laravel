@@ -1,5 +1,5 @@
 @php
-    $pageTitle = 'News';
+    $pageTitle = __('common.news');
 @endphp
 
 @extends('index')
@@ -16,7 +16,7 @@
         <div class="col-12">
             <p>
                 <i>{{ \Carbon\Carbon::parse($news->date)->format('d/m/Y') }}</i><br>
-                {!! $news->text !!}
+                {!! $news->getLocalizedText() !!}
             </p>
         </div>
     </div>

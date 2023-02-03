@@ -2,7 +2,6 @@
 
 @section('content')
     <div >
-
         <label>africanskye gluky</label><br>
         <audio controls="controls" title="africanskye gluky">
             <source src="http://a-potap.ru/albums/mus/mytracs/africanskye gluky.mp3" />
@@ -74,6 +73,5 @@
         <audio controls="controls">
             <source src="http://a-potap.ru/albums/mus/mytracs/you_v got my hart.mp3" />
         </audio>
-
     </div>
 @endsection

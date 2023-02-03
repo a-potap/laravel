@@ -23,7 +23,7 @@
             <a href="/"> <img src="/img/logo.jpg"></a>
         </div>
         <div class="col-sm-8">
-            <div class="language d-none text-end">
+            <div class="language d-none d-sm-block text-end">
                 <a class="active" href="/ru">RU</a>
                 <a class="" href="/en">EN</a>
             </div>
@@ -37,22 +37,22 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/news">News</a>
+                                    <a class="nav-link" href="/news">{{__('common.news')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/blog">Blog</a>
+                                    <a class="nav-link" href="/blog">{{__('common.blog')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/photo">Photo</a>
+                                    <a class="nav-link" href="/photo">{{__('common.photo')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/music">Music</a>
+                                    <a class="nav-link" href="/music">{{__('common.music')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/video">Video</a>
+                                    <a class="nav-link" href="/video">{{__('common.video')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/resume">Resume</a>
+                                    <a class="nav-link" href="/resume">{{__('common.resume')}}</a>
                                 </li>
 
                             </ul>

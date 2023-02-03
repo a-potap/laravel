@@ -1,5 +1,5 @@
 @php
-    $pageTitle = 'Photos';
+    $pageTitle = __('common.photo');
 @endphp
 
 @extends('index')
@@ -7,7 +7,7 @@
 @section('content')
     <h1>{{$pageTitle}}</h1>
 
-    <h2>{{$album->name}}</h2>
+    <h2>{{ $album->getLocalizedName() }}</h2>
     <div class="row">
         <div class="col-12">
             <p>
@@ -15,7 +15,7 @@
             </p>
 
             <p>
-                {{$album->description}}
+                {{ $album->getLocalizedDescription() }}
             </p>
         </div>
     </div>

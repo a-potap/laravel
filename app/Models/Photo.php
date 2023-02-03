@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Photo extends Model
 {
@@ -17,7 +18,18 @@ class Photo extends Model
     private $fileextentions = ['JPG', 'jpg', 'gif'];
     private $_facefile = 'fase.JPG';
 
-
+    public function getLocalizedName() {
+        if(App::isLocale('en') && $this->name_en) {
+            return $this->name_en;
+        }
+        return $this->name;
+    }
+    public function getLocalizedDescription() {
+        if(App::isLocale('en') && $this->description_en) {
+            return $this->description_en;
+        }
+        return $this->description;
+    }
     public function getFiles() {
         $files = [];
         $a_cur_dir = $this->basedir . $this->folder;

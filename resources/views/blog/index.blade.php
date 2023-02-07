@@ -18,7 +18,7 @@
             </div>
 
             <div>
-                {{ mb_substr($item->getLocalizedText(), 0, 200) }}
+                {{ strip_tags(mb_substr($item->getLocalizedText(), 0, 200)).'...' }}
             </div>
         </div>
     @endforeach

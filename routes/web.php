@@ -2,28 +2,38 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('{lang?}')->middleware('locale')->group(function() {
-    Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index']);
+$languages = config('app.locales');
+array_unshift($languages, '');
 
-    Route::get('resume', function () {
-        return view('resume');
+foreach ($languages as $language) {
+    Route::prefix($language)->middleware('locale')->group(function() {
+        Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index']);
+
+        Route::get('/resume', function () {
+            return view('resume');
+        });
+
+        Route::get('/music', function () {
+            return view('music');
+        });
+
+        Route::get('/video', function () {
+            return view('video');
+        });
+
+        Route::controller(\App\Http\Controllers\NewsController::class)->group(function () {
+            Route::get('/news/{news}', 'show');
+            Route::get('/news', 'index');
+        });
+
+        Route::controller(\App\Http\Controllers\BlogController::class)->group(function () {
+            Route::get('/blog', 'index');
+            Route::get('/post/{blog}', 'show');
+        });
+
+        Route::controller(\App\Http\Controllers\PhotoController::class)->group(function () {
+            Route::get('/photo/{album}', 'show');
+            Route::get('/photo', 'index');
+        });
     });
-
-    Route::get('music', function () {
-        return view('music');
-    });
-
-    Route::get('video', function () {
-        return view('video');
-    });
-
-    Route::resource('news', \App\Http\Controllers\NewsController::class);
-
-    Route::resource('blog', \App\Http\Controllers\BlogController::class);
-    Route::get('/post/{blog}', function (\App\Models\Blog $blog) {
-        return view('blog.show',compact('blog'));
-    });
-
-    Route::get('photo', [\App\Http\Controllers\PhotoController::class, 'index']);
-    Route::get('photo/{albumId}', [\App\Http\Controllers\PhotoController::class, 'show']);
-});
+}

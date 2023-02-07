@@ -9,7 +9,9 @@
     @foreach ($news as $item)
         <div class="row">
             <div class="col-12">
-                <a href="{{url('news', $item->id)}}">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</a>
+                <a href="{{ \App\Helpers\CustomUrl::url('news', $item->id)}}">
+                    {{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}
+                </a>
                 <p>
                     {!! $item->getLocalizedText() !!}
                 </p>

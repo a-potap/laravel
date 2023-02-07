@@ -11,7 +11,7 @@
             <h2> {{ $blog->getLocalizedTitle() }}</h2>
         </div>
         <div class="col-2 text-end">
-            <a class="btn btn-primary" href="{{ route('blog.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ url()->previous() }}"> Back</a>
         </div>
     </div>
 

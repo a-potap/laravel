@@ -8,7 +8,9 @@
     <h1>{{$pageTitle}}</h1>
     @foreach ($blog as $item)
         <div class="post-item">
-            <h2><a href="{{url("/post/{$item->id}")}}"> {{ $item->getLocalizedTitle() }}</a></h2>
+            <h2>
+                <a href="{{\App\Helpers\CustomUrl::url('/post', $item->id)}}"> {{ $item->getLocalizedTitle() }}</a>
+            </h2>
             <div>
                 <p>
                     <i>{{ $item->date }}</i>

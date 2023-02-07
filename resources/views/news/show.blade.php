@@ -8,7 +8,7 @@
     <h1>{{$pageTitle}}</h1>
     <div class="row">
         <div class="col-12 text-end">
-            <a class="btn btn-primary" href="{{ route('news.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ url()->previous() }}"> Back</a>
         </div>
     </div>
 

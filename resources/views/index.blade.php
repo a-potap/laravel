@@ -24,8 +24,8 @@
         </div>
         <div class="col-sm-8">
             <div class="language d-none d-sm-block text-end">
-                <a class="active" href="/ru">RU</a>
-                <a class="" href="/en">EN</a>
+                <a class="active" href="{{\App\Helpers\CustomUrl::getLocalizedCurrentPage('ru')}}">RU</a>
+                <a class="" href="{{\App\Helpers\CustomUrl::getLocalizedCurrentPage('en')}}">EN</a>
             </div>
             <div class="row">
                 <nav class="navbar navbar-expand-sm navbar-dark">
@@ -37,22 +37,22 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/news">{{__('common.news')}}</a>
+                                    <a class="nav-link" href="{{\App\Helpers\CustomUrl::url('/news')}}">{{__('common.news')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/blog">{{__('common.blog')}}</a>
+                                    <a class="nav-link" href="{{\App\Helpers\CustomUrl::url('/blog')}}">{{__('common.blog')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/photo">{{__('common.photo')}}</a>
+                                    <a class="nav-link" href="{{\App\Helpers\CustomUrl::url('/photo')}}">{{__('common.photo')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/music">{{__('common.music')}}</a>
+                                    <a class="nav-link" href="{{\App\Helpers\CustomUrl::url('/music')}}">{{__('common.music')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/video">{{__('common.video')}}</a>
+                                    <a class="nav-link" href="{{\App\Helpers\CustomUrl::url('/video')}}">{{__('common.video')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/resume">{{__('common.resume')}}</a>
+                                    <a class="nav-link" href="{{\App\Helpers\CustomUrl::url('/resume')}}">{{__('common.resume')}}</a>
                                 </li>
 
                             </ul>

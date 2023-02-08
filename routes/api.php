@@ -14,6 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::controller(\App\Http\Controllers\Api\NewsController::class)->group(function () {
+    Route::get('/news', 'index');
+    Route::get('/news/{id}', 'show');
+});
+
+Route::controller(\App\Http\Controllers\Api\BlogController::class)->group(function () {
+    Route::get('/blog', 'index');
+    Route::get('/blog/{id}', 'show');
+});
+
+Route::controller(\App\Http\Controllers\Api\PhotosController::class)->group(function () {
+    Route::get('/photos', 'index');
+    Route::get('/photos/{id}', 'show');
+});
+
+Route::controller(\App\Http\Controllers\Api\CommentsController::class)->group(function () {
+    Route::get('/blog/{id}/comments', 'index');
+});
+
+Route::fallback(function(){
+    return response()->json(['message' => 'Resource Not Found.'], 404);
 });

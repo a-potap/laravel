@@ -14,6 +14,10 @@ class CustomUrl
             $isAbsolute = true;
         }
 
+        if(empty($segments[0])) {
+            array_shift($segments);
+        }
+
         if(app()->getLocale() !== config('app.fallback_locale')) {
             array_unshift($segments, app()->getLocale());
         }

@@ -41,7 +41,7 @@ class Photo extends Model
                     ) &&
                     in_array(substr($file, strlen($file) - 3, 3), $this->fileextentions)
                 )
-                    $files[] = ["file" => $file, "path" => '/' . $a_cur_dir . "/" . $file];
+                    $files[] = ["file" => $file, "path" => url('/' . $a_cur_dir . "/" . $file)];
             }
 
             closedir($handledir);
@@ -56,6 +56,6 @@ class Photo extends Model
     }
 
     public function getCover() {
-        return '';
+        return url('/albums/foto/'.$this->folder.'/fase.JPG');
     }
 }

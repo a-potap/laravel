@@ -20,7 +20,7 @@
 <div class="container">
     <div class="row header">
         <div class="col-sm-4 d-none d-sm-block">
-            <a href="/"> <img src="/img/logo.jpg"></a>
+            <a href="{{\App\Helpers\CustomUrl::url('/')}}"> <img src="/img/logo.jpg"></a>
         </div>
         <div class="col-sm-8">
             <div class="language d-none d-sm-block text-end">

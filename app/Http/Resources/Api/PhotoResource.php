@@ -2,8 +2,28 @@
 
 namespace App\Http\Resources\Api;
 
+/**
+ * @OA\Schema(
+ *     title="PhotoResource",
+ *     description="Photo Resource",
+ *     @OA\Xml(
+ *         name="PhotoResource"
+ *     )
+ * )
+ */
 class PhotoResource extends BaseResource
 {
+
+    /**
+     * @OA\Property(
+     *     title="Data",
+     *     description="Data wrapper"
+     * )
+     *
+     * @var \App\Models\Photo[]
+     */
+    private $data;
+
     /**
      * Transform the resource into an array.
      *

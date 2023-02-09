@@ -1,0 +1,522 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "A-POTAP API Documentation",
+        "description": "Describe API methods for information",
+        "contact": {
+            "email": "a-potap@mail.ru"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://a-potap.test/api",
+            "description": "A_POTAP API Server"
+        }
+    ],
+    "paths": {
+        "/blog": {
+            "get": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Get list of blog posts",
+                "description": "Returns list of posts",
+                "operationId": "getBlogList",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BlogResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/blog/{id}": {
+            "get": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Get blog post information",
+                "description": "Returns blog post data",
+                "operationId": "getBlogById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Blog id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Blog"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/blog/{id}/comments": {
+            "get": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Get list of blog post comments",
+                "description": "Returns list of comments",
+                "operationId": "getBlogCommentsList",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Blog id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommentResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/news": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Get list of news",
+                "description": "Returns list of news",
+                "operationId": "getNewsList",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NewsResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/news/{id}": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Get news information",
+                "description": "Returns news data",
+                "operationId": "getNewsById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "News id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/News"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/photos": {
+            "get": {
+                "tags": [
+                    "Photos"
+                ],
+                "summary": "Get list of photo albums",
+                "description": "Returns list of albums",
+                "operationId": "getPhotosList",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PhotoResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/photos/{id}": {
+            "get": {
+                "tags": [
+                    "Photos"
+                ],
+                "summary": "Get Photo Album with photos list",
+                "description": "Get Photo Album with photos list",
+                "operationId": "getPhotoAlbumById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Photo album id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PhotoResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BlogResource": {
+                "title": "BlogResource",
+                "description": "Blog resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Blog"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "BlogResource"
+                }
+            },
+            "CommentResource": {
+                "title": "Blog Comments Resource",
+                "description": "Blog Comments Resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Comment"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "CommentResource"
+                }
+            },
+            "NewsResource": {
+                "title": "NewsResource",
+                "description": "News resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/News"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "NewsResource"
+                }
+            },
+            "PhotoResource": {
+                "title": "PhotoResource",
+                "description": "Photo Resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Photo"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PhotoResource"
+                }
+            },
+            "Blog": {
+                "title": "Blog",
+                "description": "Blog model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "date": {
+                        "title": "Date",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "description": "Blog title",
+                        "type": "string",
+                        "example": "This is post title"
+                    },
+                    "title_en": {
+                        "title": "Title EN",
+                        "description": "Blog title english version",
+                        "type": "string",
+                        "example": "This is post title"
+                    },
+                    "text": {
+                        "title": "Text",
+                        "description": "Post content text",
+                        "type": "string",
+                        "example": "Long text should be here"
+                    },
+                    "text_en": {
+                        "title": "Text EN",
+                        "description": "Post content text english version",
+                        "type": "string",
+                        "example": "Long text should be here"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "News"
+                }
+            },
+            "Comment": {
+                "title": "Blog comments",
+                "description": "Blog comments model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "date": {
+                        "title": "Date",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "text": {
+                        "title": "Text",
+                        "description": "Comment text",
+                        "type": "string",
+                        "example": "Some comment to any post"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Comment"
+                }
+            },
+            "News": {
+                "title": "News",
+                "description": "News model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "date": {
+                        "title": "Date",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "text": {
+                        "title": "Text",
+                        "description": "News text",
+                        "type": "string",
+                        "example": "News content text"
+                    },
+                    "text_en": {
+                        "title": "Text EN",
+                        "description": "News english text",
+                        "type": "string",
+                        "example": "News text english version"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "News"
+                }
+            },
+            "Photo": {
+                "title": "Photo",
+                "description": "Photo album model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "date_create": {
+                        "title": "Date Create",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Album name",
+                        "type": "string",
+                        "example": "Some example name"
+                    },
+                    "name_en": {
+                        "title": "Name EN",
+                        "description": "Album name english version",
+                        "type": "string",
+                        "example": "Some example name"
+                    },
+                    "description": {
+                        "title": "Description",
+                        "description": "Album description",
+                        "type": "string",
+                        "example": "Some description long text"
+                    },
+                    "description_en": {
+                        "title": "Description EN",
+                        "description": "Album description english version",
+                        "type": "string",
+                        "example": "Some description long text"
+                    },
+                    "cover": {
+                        "title": "Cover",
+                        "description": "Album cover image linc",
+                        "type": "string",
+                        "example": "http://a-potap.test/albums/foto/lisbon/fase.JPG"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Photo"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "A-POTAP BLOG",
+            "description": "API Endpoints of "
+        }
+    ]
+}

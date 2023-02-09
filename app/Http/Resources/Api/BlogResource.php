@@ -2,8 +2,27 @@
 
 namespace App\Http\Resources\Api;
 
+/**
+ * @OA\Schema(
+ *     title="BlogResource",
+ *     description="Blog resource",
+ *     @OA\Xml(
+ *         name="BlogResource"
+ *     )
+ * )
+ */
 class BlogResource extends BaseResource
 {
+    /**
+     * @OA\Property(
+     *     title="Data",
+     *     description="Data wrapper"
+     * )
+     *
+     * @var \App\Models\Blog[]
+     */
+    private $data;
+
     /**
      * Transform the resource into an array.
      *

@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 
+/**
+ * @OA\Schema(
+ *     title="Blog",
+ *     description="Blog model",
+ *     @OA\Xml(
+ *         name="News"
+ *     )
+ * )
+ */
 class Blog extends Model
 {
     use HasFactory;
@@ -13,6 +22,75 @@ class Blog extends Model
     protected $table = 'blog';
 
     const CREATED_AT = 'date';
+
+    /**
+     * @OA\Property(
+     *     title="ID",
+     *     description="ID",
+     *     format="int64",
+     *     example=1
+     * )
+     *
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @OA\Property(
+     *     title="Date",
+     *     description="Created at",
+     *     example="2020-01-27 17:50:45",
+     *     format="datetime",
+     *     type="string"
+     * )
+     *
+     * @var \DateTime
+     */
+    public $date;
+
+    /**
+     * @OA\Property(
+     *      title="Title",
+     *      description="Blog title",
+     *      example="This is post title"
+     * )
+     *
+     * @var string
+     */
+    public $title;
+
+    /**
+     * @OA\Property(
+     *      title="Title EN",
+     *      description="Blog title english version",
+     *      example="This is post title"
+     * )
+     *
+     * @var string
+     */
+    public $title_en;
+
+    /**
+     * @OA\Property(
+     *      title="Text",
+     *      description="Post content text",
+     *      example="Long text should be here"
+     * )
+     *
+     * @var string
+     */
+    public $text;
+
+    /**
+     * @OA\Property(
+     *      title="Text EN",
+     *      description="Post content text english version",
+     *      example="Long text should be here"
+     * )
+     *
+     * @var string
+     */
+    public $text_en;
 
     public function comments()
     {

@@ -29,6 +29,7 @@ foreach ($languages as $language) {
         Route::controller(\App\Http\Controllers\BlogController::class)->group(function () {
             Route::get('/blog', 'index');
             Route::get('/post/{blog}', 'show');
+            Route::post('/post/{blog}/comment', 'comment');
         });
 
         Route::controller(\App\Http\Controllers\PhotoController::class)->group(function () {

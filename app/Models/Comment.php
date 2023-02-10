@@ -44,9 +44,12 @@ class Comment extends Model
     protected $table = 'blog_coments';
 
     const CREATED_AT = 'date';
+    const UPDATED_AT = null;
 
-    protected $hidden = [
-        'idpost',
-        'iduser',
-    ];
+    protected $fillable = ['iduser', 'text', 'blog_id'];
+
+//    protected $hidden = [
+//        'idpost',
+//        'iduser',
+//    ];
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCommentRequest;
 use App\Models\Blog;
-use Illuminate\Http\Request;
+use App\Models\Comment;
+use Illuminate\Support\Facades\Redirect;
 
 class BlogController extends Controller
 {
@@ -29,5 +31,12 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         return view('blog.show',compact('blog'));
+    }
+
+    public function comment(StoreCommentRequest $request)
+    {
+        $comment = Comment::create($request->all());
+
+        return Redirect::to('/post/'.$comment->blog_id)->with('comment.success','Comment stored successfully!');;
     }
 }

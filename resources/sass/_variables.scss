@@ -142,3 +142,9 @@ $pagination-active-border-color:    $white !default;
 $pagination-disabled-color:         $gray-600 !default;
 $pagination-disabled-bg:            $gray-800 !default;
 $pagination-disabled-border-color:  $gray-800 !default;
+
+// scss-docs-start border-radius-variables
+$border-radius:               0 !default;
+$border-radius-sm:            0 !default;
+$border-radius-lg:            0 !default;
+$border-radius-pill:          0 !default;

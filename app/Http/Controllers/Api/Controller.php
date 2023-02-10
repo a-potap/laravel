@@ -29,6 +29,28 @@ use Illuminate\Routing\Controller as BaseController;
  *     name="A-POTAP BLOG",
  *     description="API Endpoints of "
  * )
+ *
+ * @OA\Schemas (
+ * @OA\Schema (
+ *     schema="NotFoundException",
+ *     title="NotFoundException",
+ *     description="Not Found Exception data",
+ *     @OA\Xml(
+ *         name="NotFoundException"
+ *     ) ,
+ *     @OA\Property(
+ *          property="message",
+ *          title="Message",
+ *          description="Error text",
+ *          format="string",
+ *          example="Record not found.",
+ *          type="string"
+ *      )
+ * )
+ * )
+ *
+ *
+
  */
 class Controller extends BaseController
 {

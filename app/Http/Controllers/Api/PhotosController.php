@@ -62,6 +62,7 @@ class PhotosController extends Controller
      *      @OA\Response(
      *          response=404,
      *          description="Not found",
+     *          @OA\JsonContent(ref="#/components/schemas/NotFoundException")
      *      )
      * )
      */

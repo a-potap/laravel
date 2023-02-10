@@ -11,7 +11,30 @@ use Illuminate\Database\Eloquent\Model;
  *     description="Blog comments model",
  *     @OA\Xml(
  *         name="Comment"
- *     )
+ *     ),
+ *     @OA\Property(
+ *          property="id",
+ *          title="ID",
+ *          description="ID",
+ *          format="int64",
+ *          example="1",
+ *          type="integer"
+ *      ),
+ *     @OA\Property(
+ *          property="date",
+ *          title="Date",
+ *          description="Created at",
+ *          format="datetime",
+ *          example="2020-01-27 17:50:45",
+ *          type="string"
+ *      ),
+ *     @OA\Property(
+ *          property="text",
+ *          title="Text",
+ *          description="Comment text",
+ *          example="Some comment to any post",
+ *          type="string"
+ *      )
  * )
  */
 class Comment extends Model
@@ -21,42 +44,6 @@ class Comment extends Model
     protected $table = 'blog_coments';
 
     const CREATED_AT = 'date';
-
-    /**
-     * @OA\Property(
-     *     title="ID",
-     *     description="ID",
-     *     format="int64",
-     *     example=1
-     * )
-     *
-     * @var integer
-     */
-    private $id;
-
-    /**
-     * @OA\Property(
-     *     title="Date",
-     *     description="Created at",
-     *     example="2020-01-27 17:50:45",
-     *     format="datetime",
-     *     type="string"
-     * )
-     *
-     * @var \DateTime
-     */
-    public $date;
-
-    /**
-     * @OA\Property(
-     *      title="Text",
-     *      description="Comment text",
-     *      example="Some comment to any post"
-     * )
-     *
-     * @var string
-     */
-    public $text;
 
     protected $hidden = [
         'idpost',

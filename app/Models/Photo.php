@@ -12,7 +12,58 @@ use Illuminate\Support\Facades\App;
  *     description="Photo album model",
  *     @OA\Xml(
  *         name="Photo"
- *     )
+ *     ),
+ *     @OA\Property(
+ *          property="id",
+ *          title="ID",
+ *          description="ID",
+ *          format="int64",
+ *          example=1,
+ *          type="integer"
+ *      ),
+ *     @OA\Property(
+ *          property="date_create",
+ *          title="Date Create",
+ *          description="Created at",
+ *          format="datetime",
+ *          example="2020-01-27 17:50:45",
+ *          type="string"
+ *      ),
+ *     @OA\Property(
+ *          property="name",
+ *          title="Name",
+ *          description="Album name",
+ *          example="Some example name",
+ *          type="string"
+ *      ),
+ *     @OA\Property(
+ *          property="name_en",
+ *          title="Name EN",
+ *          description="Album name english version",
+ *          example="Some example name",
+ *          type="string"
+ *      ),
+ *     @OA\Property(
+ *          property="description",
+ *          title="Description",
+ *          description="Album description",
+ *          example="Some description long text",
+ *          type="string"
+ *      ),
+ *     @OA\Property(
+ *          property="description_en",
+ *          title="Description EN",
+ *          description="Album description english version",
+ *          example="Some description long text",
+ *          type="string"
+ *      ),
+ *     @OA\Property(
+ *          property="cover",
+ *          title="Cover",
+ *          description="Album cover image linc",
+ *          example="https://a-potap.ru/albums/foto/lisbon/fase.JPG",
+ *          type="string"
+ *      )
  * )
  */
 class Photo extends Model
@@ -27,84 +78,6 @@ class Photo extends Model
     private $fileextentions = ['JPG', 'jpg', 'gif'];
     private $_facefile = 'fase.JPG';
 
-
-    /**
-     * @OA\Property(
-     *     title="ID",
-     *     description="ID",
-     *     format="int64",
-     *     example=1
-     * )
-     *
-     * @var integer
-     */
-    private $id;
-
-    /**
-     * @OA\Property(
-     *     title="Date Create",
-     *     description="Created at",
-     *     example="2020-01-27 17:50:45",
-     *     format="datetime",
-     *     type="string"
-     * )
-     *
-     * @var \DateTime
-     */
-    private $date_create;
-
-    /**
-     * @OA\Property(
-     *      title="Name",
-     *      description="Album name",
-     *      example="Some example name"
-     * )
-     *
-     * @var string
-     */
-    public $name;
-
-    /**
-     * @OA\Property(
-     *      title="Name EN",
-     *      description="Album name english version",
-     *      example="Some example name"
-     * )
-     *
-     * @var string
-     */
-    public $name_en;
-
-    /**
-     * @OA\Property(
-     *      title="Description",
-     *      description="Album description",
-     *      example="Some description long text"
-     * )
-     *
-     * @var string
-     */
-    public $description;
-
-    /**
-     * @OA\Property(
-     *      title="Description EN",
-     *      description="Album description english version",
-     *      example="Some description long text"
-     * )
-     *
-     * @var string
-     */
-    public $description_en;
-    /**
-     * @OA\Property(
-     *      title="Cover",
-     *      description="Album cover image linc",
-     *      example="http://a-potap.test/albums/foto/lisbon/fase.JPG"
-     * )
-     *
-     * @var string
-     */
     public $cover;
 
     public function getLocalizedName() {

@@ -11,8 +11,52 @@ use Illuminate\Support\Facades\App;
  *     title="Blog",
  *     description="Blog model",
  *     @OA\Xml(
- *         name="News"
- *     )
+ *         name="Blog"
+ *     ),
+ *     @OA\Property(
+ *          property="id",
+ *          title="ID",
+ *          description="ID",
+ *          format="int64",
+ *          example=1,
+ *          type="integer"
+ *      ),
+ *     @OA\Property(
+ *          property="date",
+ *          title="Date",
+ *          description="Created at",
+ *          format="datetime",
+ *          example="2020-01-27 17:50:45",
+ *          type="string"
+ *      ),
+ *     @OA\Property(
+ *          property="title",
+ *          title="Title",
+ *          description="Blog title",
+ *          example="This is post title",
+ *          type="string"
+ *      ),
+ *     @OA\Property(
+ *          property="title_en",
+ *          title="Title EN",
+ *          description="Blog title  english version",
+ *          example="This is post title",
+ *          type="string"
+ *      ),
+ *     @OA\Property(
+ *          property="text",
+ *          title="Text",
+ *          description="Post content text",
+ *          example="Long text should be here",
+ *          type="string"
+ *      ),
+ *     @OA\Property(
+ *          property="text_en",
+ *          title="Text EN",
+ *          description="Post content text english version",
+ *          example="Long text should be here",
+ *          type="string"
+ *      )
  * )
  */
 class Blog extends Model
@@ -23,88 +67,22 @@ class Blog extends Model
 
     const CREATED_AT = 'date';
 
-    /**
-     * @OA\Property(
-     *     title="ID",
-     *     description="ID",
-     *     format="int64",
-     *     example=1
-     * )
-     *
-     * @var integer
-     */
-    private $id;
-
-    /**
-     * @OA\Property(
-     *     title="Date",
-     *     description="Created at",
-     *     example="2020-01-27 17:50:45",
-     *     format="datetime",
-     *     type="string"
-     * )
-     *
-     * @var \DateTime
-     */
-    public $date;
-
-    /**
-     * @OA\Property(
-     *      title="Title",
-     *      description="Blog title",
-     *      example="This is post title"
-     * )
-     *
-     * @var string
-     */
-    public $title;
-
-    /**
-     * @OA\Property(
-     *      title="Title EN",
-     *      description="Blog title english version",
-     *      example="This is post title"
-     * )
-     *
-     * @var string
-     */
-    public $title_en;
-
-    /**
-     * @OA\Property(
-     *      title="Text",
-     *      description="Post content text",
-     *      example="Long text should be here"
-     * )
-     *
-     * @var string
-     */
-    public $text;
-
-    /**
-     * @OA\Property(
-     *      title="Text EN",
-     *      description="Post content text english version",
-     *      example="Long text should be here"
-     * )
-     *
-     * @var string
-     */
-    public $text_en;
-
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
 
-    public function getLocalizedTitle() {
-        if(App::isLocale('en') && $this->title_en) {
+    public function getLocalizedTitle()
+    {
+        if (App::isLocale('en') && $this->title_en) {
             return $this->title_en;
         }
         return $this->title;
     }
-    public function getLocalizedText() {
-        if(App::isLocale('en') && $this->text_en) {
+
+    public function getLocalizedText()
+    {
+        if (App::isLocale('en') && $this->text_en) {
             return $this->text_en;
         }
         return $this->text;

@@ -12,7 +12,37 @@ use Illuminate\Support\Facades\App;
  *     description="News model",
  *     @OA\Xml(
  *         name="News"
- *     )
+ *     ),
+ *     @OA\Property(
+ *          property="id",
+ *          title="ID",
+ *          description="ID",
+ *          format="int64",
+ *          example=1,
+ *          type="integer"
+ *      ),
+ *     @OA\Property(
+ *          property="date",
+ *          title="Date",
+ *          description="Created at",
+ *          format="datetime",
+ *          example="2020-01-27 17:50:45",
+ *          type="string"
+ *      ),
+ *     @OA\Property(
+ *          property="text",
+ *          title="Text",
+ *          description="News text",
+ *          example="Some news text",
+ *          type="string"
+ *      ),
+ *     @OA\Property(
+ *          property="text_en",
+ *          title="Text EN",
+ *          description="News text english version",
+ *          example="TSome news text",
+ *          type="string"
+ *      )
  * )
  */
 class News extends Model
@@ -20,54 +50,6 @@ class News extends Model
     use HasFactory;
 
     const CREATED_AT = 'date';
-
-    /**
-     * @OA\Property(
-     *     title="ID",
-     *     description="ID",
-     *     format="int64",
-     *     example=1
-     * )
-     *
-     * @var integer
-     */
-    private $id;
-
-    /**
-     * @OA\Property(
-     *     title="Date",
-     *     description="Created at",
-     *     example="2020-01-27 17:50:45",
-     *     format="datetime",
-     *     type="string"
-     * )
-     *
-     * @var \DateTime
-     */
-    public $date;
-
-
-    /**
-     * @OA\Property(
-     *      title="Text",
-     *      description="News text",
-     *      example="News content text"
-     * )
-     *
-     * @var string
-     */
-    public $text;
-
-    /**
-     * @OA\Property(
-     *      title="Text EN",
-     *      description="News english text",
-     *      example="News text english version"
-     * )
-     *
-     * @var string
-     */
-    public $text_en;
 
     public function getLocalizedText() {
         if(App::isLocale('en') && $this->text_en) {

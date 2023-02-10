@@ -83,7 +83,14 @@
                         }
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundException"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -194,7 +201,14 @@
                         }
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundException"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -263,7 +277,14 @@
                         }
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundException"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -271,6 +292,23 @@
     },
     "components": {
         "schemas": {
+            "NotFoundException": {
+                "title": "NotFoundException",
+                "description": "Not Found Exception data",
+                "properties": {
+                    "message": {
+                        "title": "Message",
+                        "description": "Error text",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Record not found."
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "NotFoundException"
+                }
+            },
             "BlogResource": {
                 "title": "BlogResource",
                 "description": "Blog resource",
@@ -369,7 +407,7 @@
                     },
                     "title_en": {
                         "title": "Title EN",
-                        "description": "Blog title english version",
+                        "description": "Blog title  english version",
                         "type": "string",
                         "example": "This is post title"
                     },
@@ -388,7 +426,7 @@
                 },
                 "type": "object",
                 "xml": {
-                    "name": "News"
+                    "name": "Blog"
                 }
             },
             "Comment": {
@@ -400,7 +438,7 @@
                         "description": "ID",
                         "type": "integer",
                         "format": "int64",
-                        "example": 1
+                        "example": "1"
                     },
                     "date": {
                         "title": "Date",
@@ -443,13 +481,13 @@
                         "title": "Text",
                         "description": "News text",
                         "type": "string",
-                        "example": "News content text"
+                        "example": "Some news text"
                     },
                     "text_en": {
                         "title": "Text EN",
-                        "description": "News english text",
+                        "description": "News text english version",
                         "type": "string",
-                        "example": "News text english version"
+                        "example": "TSome news text"
                     }
                 },
                 "type": "object",
@@ -503,7 +541,7 @@
                         "title": "Cover",
                         "description": "Album cover image linc",
                         "type": "string",
-                        "example": "http://a-potap.test/albums/foto/lisbon/fase.JPG"
+                        "example": "https://a-potap.ru/albums/foto/lisbon/fase.JPG"
                     }
                 },
                 "type": "object",

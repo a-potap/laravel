@@ -34,6 +34,7 @@ class CommentResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'user' => $this->iduser,
             'date' => $this->date,
             'text' => $this->text,
         ];

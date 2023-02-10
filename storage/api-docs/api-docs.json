@@ -135,6 +135,56 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Store post comment",
+                "description": "Returns comment data",
+                "operationId": "getBlogCommentsStore",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Blog id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreCommentRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
             }
         },
         "/news": {
@@ -309,6 +359,31 @@
                     "name": "NotFoundException"
                 }
             },
+            "StoreCommentRequest": {
+                "title": "Store Comment request",
+                "description": "Store comment request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "iduser": {
+                        "title": "User name",
+                        "description": "User name or nickname",
+                        "type": "string",
+                        "example": "Guest"
+                    },
+                    "text": {
+                        "title": "Comment text",
+                        "description": "Comment or message from user",
+                        "type": "string",
+                        "example": "Some comment text"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreCommentRequest"
+                }
+            },
             "BlogResource": {
                 "title": "BlogResource",
                 "description": "Blog resource",
@@ -447,11 +522,17 @@
                         "format": "datetime",
                         "example": "2020-01-27 17:50:45"
                     },
-                    "text": {
-                        "title": "Text",
-                        "description": "Comment text",
+                    "user": {
+                        "title": "User name",
+                        "description": "User name or nickname",
                         "type": "string",
-                        "example": "Some comment to any post"
+                        "example": "Guest"
+                    },
+                    "text": {
+                        "title": "Comment text",
+                        "description": "Comment or message from user",
+                        "type": "string",
+                        "example": "Some comment text"
                     }
                 },
                 "type": "object",

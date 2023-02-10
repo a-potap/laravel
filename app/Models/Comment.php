@@ -29,10 +29,17 @@ use Illuminate\Database\Eloquent\Model;
  *          type="string"
  *      ),
  *     @OA\Property(
+ *          property="user",
+ *          title="User name",
+ *          description="User name or nickname",
+ *          example="Guest",
+ *          type="string"
+ *      ),
+ *     @OA\Property(
  *          property="text",
- *          title="Text",
- *          description="Comment text",
- *          example="Some comment to any post",
+ *          title="Comment text",
+ *          description="Comment or message from user",
+ *          example="Some comment text",
  *          type="string"
  *      )
  * )
@@ -47,9 +54,4 @@ class Comment extends Model
     const UPDATED_AT = null;
 
     protected $fillable = ['iduser', 'text', 'blog_id'];
-
-//    protected $hidden = [
-//        'idpost',
-//        'iduser',
-//    ];
 }

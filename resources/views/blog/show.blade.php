@@ -28,7 +28,7 @@
             @foreach ($blog->comments as $comment)
                 <div class="row">
                     <div class="col-11 offset-1">
-                        <strong>Гость</strong>
+                        <strong>{{$comment->iduser}}</strong>
                         <span>{{ \Carbon\Carbon::parse($comment->date)->format('d/m/Y') }}</span>
                         <p>
                             {{$comment->text}}

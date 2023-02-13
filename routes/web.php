@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CaptchaValidationController;
 
 $languages = config('app.locales');
 array_unshift($languages, '');
@@ -38,3 +39,5 @@ foreach ($languages as $language) {
         });
     });
 }
+
+Route::get('reload-captcha', [CaptchaValidationController::class, 'reloadCaptcha']);

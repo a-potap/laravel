@@ -52,6 +52,7 @@ class StoreCommentRequest extends FormRequest
             'blog_id' => 'required|integer',
             'iduser' => 'required',
             'text' => 'required',
+            'captcha' => 'required|captcha',
         ];
     }
 

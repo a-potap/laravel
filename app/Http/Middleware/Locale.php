@@ -17,12 +17,10 @@ class Locale
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->method() === 'GET') {
-            $segment = $request->segment(1);
+        $segment = $request->segment(1);
 
-            if (in_array($segment, config('app.locales'))) {
-                app()->setLocale($segment);
-            }
+        if (in_array($segment, config('app.locales'))) {
+            app()->setLocale($segment);
         }
 
         return $next($request);

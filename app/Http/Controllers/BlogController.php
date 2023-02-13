@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CustomUrl;
 use App\Http\Requests\StoreCommentRequest;
 use App\Models\Blog;
 use App\Models\Comment;
@@ -37,6 +38,6 @@ class BlogController extends Controller
     {
         $comment = Comment::create($request->all());
 
-        return Redirect::to('/post/'.$comment->blog_id)->with('comment.success','Comment stored successfully!');;
+        return Redirect::to( CustomUrl::url('/post/'.$comment->blog_id))->with('comment.success', __('blog.success'));
     }
 }

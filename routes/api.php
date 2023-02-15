@@ -31,7 +31,7 @@ Route::controller(\App\Http\Controllers\Api\PhotosController::class)->group(func
 
 Route::controller(\App\Http\Controllers\Api\CommentsController::class)->group(function () {
     Route::get('/blog/{id}/comments', 'index');
-    Route::post('/blog/{blog}/comments', 'store');
+    Route::post('/blog/{blog}/comments', 'store')->middleware(['throttle:comments']);
 });
 
 Route::fallback(function(){

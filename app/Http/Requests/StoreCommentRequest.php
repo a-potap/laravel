@@ -4,31 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * @OA\Schema(
- *      title="Store Comment request",
- *      description="Store comment request body data",
- *      type="object",
- *      required={"name"},
- *     @OA\Xml(
- *         name="StoreCommentRequest"
- *     ),
- *     @OA\Property(
- *          property="iduser",
- *          title="User name",
- *          description="User name or nickname",
- *          example="Guest",
- *          type="string"
- *      ),
- *     @OA\Property(
- *          property="text",
- *          title="Comment text",
- *          description="Comment or message from user",
- *          example="Some comment text",
- *          type="string"
- *      )
- * )
- */
 class StoreCommentRequest extends FormRequest
 {
     /**

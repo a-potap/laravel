@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\StoreCommentRequest;
+use App\Http\Requests\Api\StoreCommentRequest;
 use App\Http\Resources\Api\CommentCollection;
 use App\Http\Resources\Api\CommentResource;
 use App\Models\Comment;

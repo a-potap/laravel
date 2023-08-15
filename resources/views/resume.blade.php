@@ -20,10 +20,6 @@
             <p>
             <ul>
                 <li>
-                    1 year at a radio manufactory as a programmer - technician
-                    (program development in conjunction with Delphi and SQL);
-                </li>
-                <li>
                     1.5 years in the company Kedr-Consulting LLC as a 1C programmer in 7.7 and 8.1
                     , (completion, implementation, support of various configurations);
                 </li>
@@ -34,7 +30,7 @@
                 <li>
                     2 years at <a href="http://www.saigas.ru" target="_blank">Saigas</a> as a network programmer.
                     I support the work of the corporate portal and external site.
-                    In combination, I worked at izhlife.ru (revision, creation of new modules, editing the engine,
+                    In combination, I worked at <a href="https://izhlife.ru/" target="_blank">izhlife.ru</a> (revision, creation of new modules, editing the engine,
                     creating templates);
                 </li>
                 <li>
@@ -42,7 +38,10 @@
                     <a href="http://russianit.ru/" target="_blank">Russian Information Technologies</a> as a web programmer;
                 </li>
                 <li>
-                    Currently working as a <a href="https://www.fastdev.se" target="_blank">FastDev</a> as web programmer.
+                    For 5 years in the company a <a href="https://www.fastdev.se" target="_blank">FastDev</a> as full stack web programmer.
+                </li>
+                <li>
+                    Currently working as web programmer in <a href="https://www.fixparts-online.com/" target="_blank">Fixparts</a>.
                 </li>
             </ul>
             </p>
@@ -87,14 +86,13 @@
             <h3>Опыт работы</h3>
             <p>
             <ul>
-                <li> 1 год на радиозаводе в должности программист – техник (разработка программ в связке Delphi и SQL),</li>
                 <li> 1,5 года работы в компании ООО«Кедр-Консалтинг» программистом 1С в 7.7 и 8.1, (доработка, внедрение,
                     поддержка различных конфигураций).
                 </li>
                 <li> 1 год в удмуртском национальном театре ведущим программистом. Занимался поддержкой 1С, оборудования и
-                    работой сайта.
+                    работой <a href="http://udmteatr.ru/" target="_blank">сайта</a>.
                 </li>
-                <li> 2 года работал в "Сайгасе" сетевым программистом. Поддерживаю работу корпоративного портала и внешнего
+                <li> 2 года работал в <a href="http://www.saigas.ru" target="_blank">Сайгасе</a> сетевым программистом. Поддерживаю работу корпоративного портала и внешнего
                     сайта. По совместительству работал в <a href="http://izhlife.ru" title="Я люблю ижевск">izhlife.ru</a>
                     (доработка, создание новых модулей, правка движка, создание шаблонов)
                 </li>
@@ -102,7 +100,10 @@
                         технологии</a> веб программистом.
                 </li>
                 <li>
-                    В настоящее время работаю в компании <a href="https://www.fastdev.se" target="_blank">FastDev</a> веб программистом.
+                    5 летработал в компании <a href="https://www.fastdev.se" target="_blank">FastDev</a> фулл-стек веб программистом.
+                </li>
+                <li>
+                    В настоящее время работаю в компании <a href="https://www.fixparts-online.com/" target="_blank">Fixparts</a> веб программистом.
                 </li>
             </ul>
             </p>

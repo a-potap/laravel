@@ -7,14 +7,12 @@
 @section('content')
     <h1>{{$pageTitle}}</h1>
     @foreach ($blog as $item)
-        <div class="post-item">
+        <div class="mb-4">
             <h2>
                 <a href="{{\App\Helpers\CustomUrl::url('/post', $item->id)}}"> {{ $item->getLocalizedTitle() }}</a>
             </h2>
-            <div>
-                <p>
-                    <i>{{ $item->date }}</i>
-                </p>
+            <div class="mb-1">
+                <i>{{ $item->date }}</i>
             </div>
 
             <div>

@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "http://a-potap.test/api",
+            "url": "https://a-potap.ru/api",
             "description": "A_POTAP API Server"
         }
     ],

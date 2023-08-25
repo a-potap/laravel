@@ -1,0 +1,45 @@
+type Comment {
+    id: ID!
+    date: String!
+    user: String
+    text: String!
+    blog: Blog! @belongsTo(relation: "blog")
+}
+
+type Blog {
+    id: ID!
+    title: String!
+    title_en: String!
+    date: String!
+    text: String!
+    text_en: String!
+    comments:[Comment!]! @hasMany
+}
+
+type News {
+    id: ID!
+    date: String!
+    text: String!
+    text_en: String!
+}
+
+type Photo {
+    id: ID!
+    date: String!
+    name: String!
+    name_en: String!
+    description: String!
+    description_en: String!
+    cover: String!
+}
+
+type Query {
+    blog(id: ID! @eq): Blog @find
+    blogs: [Blog!]! @paginate
+
+    news(id: ID! @eq): News @find
+    news: [News!]! @paginate
+
+    photo(id: ID! @eq): Photo @find
+    photos: [Photo!]! @all
+}

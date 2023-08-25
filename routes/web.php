@@ -14,6 +14,10 @@ foreach ($languages as $language) {
             return view('resume');
         });
 
+        Route::get('/react', function () {
+            return view('react');
+        });
+
         Route::get('/music', function () {
             return view('music');
         });

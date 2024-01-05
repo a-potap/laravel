@@ -30,7 +30,7 @@ type Photo {
     name_en: String!
     description: String
     description_en: String
-    cover: String @method(name: "getCover")
+    cover: String
 }
 
 type Query {

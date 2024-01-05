@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="Simple CMS"/>
     <meta name="author" content="Sheikh Heera"/>
+    <meta name="yandex-verification" content="3ed6ef80a9f44beb" />
 
     <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">

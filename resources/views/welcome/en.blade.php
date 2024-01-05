@@ -11,9 +11,11 @@
 </p>
 
 <p>
-    I think that the best thing about a person is his work. Therefore, there is only what I did myself.
+    Leave a comment, if you like a story, this is the best motivation for me to write more!
 </p>
 
 <p>
-    Leave a comment, if you like a story, this is the best motivation for me to write more!
+    Now this site is also a testing ground for technology.
+    There is <a href="/api/documentation" target="_blank">RestAPI</a> and <a href="/graphql?query=query{news(first:10){data{id%20text}paginatorInfo{currentPage%20lastPage}}}">graphql</a>
+    (<a href="/gql/schema.graphql" target="_blank">schema</a> ) in order to test applications and various frameworks.
 </p>

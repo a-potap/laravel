@@ -78,7 +78,7 @@ class Photo extends Model
     private $fileextentions = ['JPG', 'jpg', 'gif'];
     private $_facefile = 'fase.JPG';
 
-    public $cover;
+    private $cover;
 
     public function getLocalizedName() {
         if(App::isLocale('en') && $this->name_en) {

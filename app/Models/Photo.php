@@ -78,7 +78,8 @@ class Photo extends Model
     private $fileextentions = ['JPG', 'jpg', 'gif'];
     private $_facefile = 'fase.JPG';
 
-    private $cover;
+    private string $cover;
+    private array $files;
 
     public function getLocalizedName() {
         if(App::isLocale('en') && $this->name_en) {
@@ -92,7 +93,7 @@ class Photo extends Model
         }
         return $this->description;
     }
-    public function getFiles() {
+    public function getFiles(): array {
         $files = [];
         $a_cur_dir = $this->basedir . $this->folder;
         if (is_dir($a_cur_dir) && $handledir = opendir($a_cur_dir)) {
@@ -117,7 +118,7 @@ class Photo extends Model
         return $files;
     }
 
-    public function getCover() {
+    public function getCover(): string {
         return url('/albums/foto/'.$this->folder.'/fase.JPG');
     }
 }

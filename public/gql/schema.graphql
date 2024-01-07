@@ -31,6 +31,12 @@ type Photo {
     description: String
     description_en: String
     cover: String
+    files: [File]
+}
+
+type File {
+    file: String!
+    path: String!
 }
 
 type Query {

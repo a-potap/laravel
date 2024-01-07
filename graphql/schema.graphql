@@ -31,6 +31,12 @@ type Photo {
     description: String
     description_en: String
     cover: String @method(name: "getCover")
+    files: [File]! @method(name: "getFiles")
+}
+
+type File {
+    file: String!
+    path: String!
 }
 
 type Query {

@@ -15,7 +15,7 @@
                         better.
                     </p>
                     <div class="embed-responsive">
-                        <video class="embed-responsive-item" controls>
+                        <video class="embed-responsive-item" controls style="width: 100%">
                             <source src="/videos/helsinki.mp4" type="video/mp4"/>
                         </video>
                     </div>
@@ -32,7 +32,7 @@
                         in honor of her admission to the university.
                     </p>
                     <div class="embed-responsive">
-                        <video class="embed-responsive-item" controls>
+                        <video class="embed-responsive-item" controls style="width: 100%">
                             <source src="/videos/sochy.mp4" type="video/mp4"/>
                         </video>
                     </div>
@@ -47,7 +47,7 @@
                         Morning mists on the outskirts of the city.
                     </p>
                     <div class="embed-responsive">
-                        <video class="embed-responsive-item" controls>
+                        <video class="embed-responsive-item" controls style="width: 100%">
                             <source src="/videos/izhevsk.mp4" type="video/mp4"/>
                         </video>
                     </div>
@@ -63,7 +63,7 @@
                         summer weekend in the village. Barbecue, fresh air, bath. Here I grew up.
                     </p>
                     <div class="embed-responsive">
-                        <video class="embed-responsive-item" controls>
+                        <video class="embed-responsive-item" controls style="width: 100%">
                             <source src="/videos/b-sardyk.mp4" type="video/mp4"/>
                         </video>
                     </div>
@@ -79,7 +79,7 @@
                         The first time I saw the sea and mountains. That is how my love for travel came about.
                     </p>
                     <div class="embed-responsive">
-                        <video class="embed-responsive-item" controls>
+                        <video class="embed-responsive-item" controls style="width: 100%">
                             <source src="/videos/sochy-2008.mp4" type="video/mp4"/>
                         </video>
                     </div>
@@ -98,7 +98,7 @@
                         наверное это даже лучше.
                     </p>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <video class="embed-responsive-item" controls>
+                        <video class="embed-responsive-item" controls style="width: 100%">
                             <source src="/videos/helsinki.mp4" type="video/mp4"/>
                         </video>
                     </div>
@@ -115,7 +115,7 @@
                         в честь её поступления в университет.
                     </p>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <video class="embed-responsive-item" controls>
+                        <video class="embed-responsive-item" controls style="width: 100%">
                             <source src="/videos/sochy.mp4" type="video/mp4"/>
                         </video>
                     </div>
@@ -130,7 +130,7 @@
                         Утренние туманы у нас за домом, на окраине города.
                     </p>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <video class="embed-responsive-item" controls>
+                        <video class="embed-responsive-item" controls style="width: 100%">
                             <source src="/videos/izhevsk.mp4" type="video/mp4"/>
                         </video>
                     </div>
@@ -146,7 +146,7 @@
                         чем проводить летние выходные в деревне. Шашлык, свежый воздух, баня. Здесь я вырос.
                     </p>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <video class="embed-responsive-item" controls>
+                        <video class="embed-responsive-item" controls style="width: 100%">
                             <source src="/videos/b-sardyk.mp4" type="video/mp4"/>
                         </video>
                     </div>
@@ -162,7 +162,7 @@
                         Так появилась моя любовь к путешествиям.
                     </p>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <video class="embed-responsive-item" controls>
+                        <video class="embed-responsive-item" controls style="width: 100%">
                             <source src="/videos/sochy-2008.mp4" type="video/mp4"/>
                         </video>
                     </div>

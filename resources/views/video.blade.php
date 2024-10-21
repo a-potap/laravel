@@ -1,7 +1,13 @@
+@php
+    $pageTitle = __('common.video');
+@endphp
+
 @extends('index')
 
 @section('content')
     <div id="content-free">
+        <h1>{{$pageTitle}}</h1>
+
         @if (App::isLocale('en'))
             <div class="row">
                 <div class="col-12">

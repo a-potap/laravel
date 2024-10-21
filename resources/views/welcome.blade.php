@@ -1,3 +1,7 @@
+@php
+    $pageTitle = __('welcome.header');
+@endphp
+
 @extends('index')
 
 @section('content')

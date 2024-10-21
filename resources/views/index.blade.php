@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-    <title>{{ config('app.name', 'Laravel') }} - {{$pageTitle ?? ''}}</title>
+    <title>{{ config('app.name', 'Potap') }} - {{$pageTitle ?? ''}}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Styles -->

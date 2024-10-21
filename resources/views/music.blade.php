@@ -1,6 +1,12 @@
+@php
+    $pageTitle = __('common.music');
+@endphp
+
 @extends('index')
 
 @section('content')
+    <h1>{{$pageTitle}}</h1>
+
     <div >
         <label>africanskye gluky</label><br>
         <audio controls="controls" title="africanskye gluky">

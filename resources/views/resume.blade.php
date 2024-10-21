@@ -1,3 +1,7 @@
+@php
+    $pageTitle = __('common.resume');
+@endphp
+
 @extends('index')
 
 @section('content')

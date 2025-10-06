@@ -53,9 +53,9 @@
             <h3>Technical skills:</h3>
             <p>
             <ul>
-                <li>knowledge of programming languages: Delphi, PHP, MSSQL / MySQL, JavaScript;</li>
-                <li>currently working on the web: PHP, HTML5, CSS (twitter bootstrap, SASS), javascript,
-                    familiar with CMS Drupal, WordPress, DLE, etc.;
+                <li>knowledge of programming languages: PHP, SQL(MySQL, PostgresQL), JavaScript;</li>
+                <li>currently working on the web: PHP, HTML5, CSS (twitter bootstrap, SASS), javascript(react),
+                    Symfony, RabbitMQ etc.;
                 </li>
                 <li> PHP frameworks: Yii2, ZF, a bit of Laravel;</li>
                 <li> MSSQL, MySQL, a bit of Mongodb;</li>
@@ -115,15 +115,15 @@
             <h3>Навыки</h3>
             <p>
             <ul>
-                <li>Знание языков: PHP, MSSQL / MySQL, JavaScript;</li>
-                <li>В данный момент работаю с: PHP, HTML5, CSS (twitter bootstrap, SASS), javascript,
-                    знаком с CMS Drupal, WordPress, DLE;
+                <li>Знание языков: PHP, MySQL, JavaScript, немного Golang;</li>
+                <li>В данный момент работаю с:  PHP, HTML5, CSS (twitter bootstrap, SASS), javascript(react),
+                    Symfony, RabbitMQ
                 </li>
-                <li> PHP фреймворк: Yii2, ZF, знаком с  Laravel;</li>
+                <li> PHP фреймворк: Yii2, Symfony, знаком с  Laravel;</li>
                 <li> MSSQL, MySQL, a bit of Mongodb;</li>
                 <li> CSS: SASS, LESS, Twitter Bootstrap, Zurb Foundation;</li>
                 <li> JS: AngularJS, React+Redux, Vie;</li>
-                <li> изучаю TypeScript и Angular.</li>
+                <li> изучаю TypeScript.</li>
             </ul>
             </p>
 

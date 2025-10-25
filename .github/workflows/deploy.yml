@@ -1,10 +1,6 @@
 name: Deploy
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
     
 jobs:
@@ -15,8 +11,8 @@ jobs:
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         with:
-          host: $
-          username: $
-          port: $
-          key: $
-          script: "cd /var/www/html && ./.scripts/deploy.sh"
+          host: $HOST
+          username: $SSH_USERNAME
+          port: $SSH_PORT
+          key: $SSH_KEY
+          script: "cd ~/www/laravel_source && sh deploy.sh"

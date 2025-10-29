@@ -56,19 +56,8 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
           # The source path now points to the downloaded location
-          source: './downloaded-artifacts/js/app.js'
-          target: ${{ secrets.PUBLIC_JS_DIR }}
-
-      - name: Copy css files to prod
-        uses: appleboy/scp-action@v0.1.0
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          port: ${{ secrets.PORT }}
-          key: ${{ secrets.SSHKEY }}
-          # The source path now points to the downloaded location
-          source: './downloaded-artifacts/css/app.css'
-          target: ${{ secrets.PUBLIC_CSS_DIR }}
+          source: './downloaded-artifacts/*'
+          target: ${{ secrets.PUBLIC_DIR }}
           
   deploy_back:
     needs: deploy_front

@@ -56,7 +56,7 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
           # The source path now points to the downloaded location
-          source: './downloaded-artifacts/public/js/app.js'
+          source: './downloaded-artifacts/js/app.js'
           target: ${{ secrets.PUBLIC_JS_DIR }}
 
       - name: Copy css files to prod
@@ -67,7 +67,7 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
           # The source path now points to the downloaded location
-          source: './downloaded-artifacts/public/css/app.css'
+          source: './downloaded-artifacts/css/app.css'
           target: ${{ secrets.PUBLIC_CSS_DIR }}
           
   deploy_back:

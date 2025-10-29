@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
     
 jobs:
+  call_test_workflow:
+    uses: ./.github/workflows/laravel.yml
+    with:
+      message: "Call testsHello from the caller!"
   deploy:
     runs-on: ubuntu-latest
     steps:

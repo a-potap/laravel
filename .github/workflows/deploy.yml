@@ -73,4 +73,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
+          timeout: 90s
           script: "cd ${{ secrets.PUBLIC_SOURCE_DIR }} && sh deploy.sh"

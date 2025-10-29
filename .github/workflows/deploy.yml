@@ -58,6 +58,8 @@ jobs:
           # The source path now points to the downloaded location
           source: './downloaded-artifacts/*'
           target: ${{ secrets.PUBLIC_DIR }}
+          overwrite: 1
+          strip_components: 1
           
   deploy_back:
     needs: deploy_front

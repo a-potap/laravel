@@ -9,6 +9,7 @@ jobs:
     with:
       message: "Call testsHello from the caller!"
   deploy:
+    needs: call_test_workflow
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

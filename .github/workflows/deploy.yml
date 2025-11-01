@@ -33,6 +33,7 @@ jobs:
           path: |
             ./public/js/app.js
             ./public/css/app.css
+            ./public/images/*
             
   deploy_front:
     needs: build_front

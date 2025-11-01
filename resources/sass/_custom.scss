@@ -1,4 +1,5 @@
-@import 'variables';
+// No imports needed here - already imported in app.scss
+// Bootstrap variables and mixins are available after Bootstrap import
 
 body{
     background: url('../images/bg.gif') repeat-x #303030;

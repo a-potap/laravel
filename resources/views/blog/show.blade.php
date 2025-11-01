@@ -10,14 +10,11 @@
         <div class="col-10">
             <h2> {{ $blog->getLocalizedTitle() }}</h2>
         </div>
-        <div class="col-2 text-end">
-            <a class="btn btn-primary" href="{{\App\Helpers\CustomUrl::url('/blog')}}"> Back</a>
-        </div>
     </div>
 
     <div class="row">
         <div class="col-12">
-            <strong>{{ $blog->date }}</strong> <br>
+            <span class="post_date mb-3">{{ $blog->date }}</span>
             {!! $blog->getLocalizedText() !!}
         </div>
     </div>

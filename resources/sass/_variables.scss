@@ -89,7 +89,7 @@ $theme-colors: (
 $container-max-widths: (
     sm: 540px,
     md: 720px,
-    lg: 800px
+    lg: 900px
 );
 
 // Body
@@ -98,9 +98,9 @@ $body-color: $gray-400 !default;
 
 // Typography
 $font-family-sans-serif: Arial, Verdana, Helvetica, sans-serif;
-$font-size-base: 0.875rem;
+$font-size-base: 1.1rem;
 $line-height-base: 1.5;
-$h1-font-size: 2rem;
+$h1-font-size: 2.3rem;
 $h2-font-size: 1.6rem;
 
 // Links

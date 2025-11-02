@@ -14,24 +14,24 @@
         @csrf
         <input type="hidden" name="blog_id" value="{{$blog->id}}">
         <div class="form-group">
-            <label for="iduser">{{__('blog.name')}}</label>
-            <input type="text" id="iduser" name="iduser" class="form-control" required="" value="{{ old('iduser') }}">
+            <label for="iduser_f">{{__('blog.name')}}</label>
+            <input type="text" id="iduser_f" name="iduser" class="form-control" required="" value="{{ old('iduser') }}">
             @error('iduser')
             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-group">
-            <label for="text">{{__('blog.message')}}</label>
-            <textarea name="text" class="form-control" required="">{{ old('text') }}</textarea>
+            <label for="text_f">{{__('blog.message')}}</label>
+            <textarea name="text" class="form-control" required="" id="text_f">{{ old('text') }}</textarea>
             @error('text')
             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-group">
-            <label for="captcha">{{__('blog.captcha')}}</label>
+            <label for="captcha_f">{{__('blog.captcha')}}</label>
             <div class="row">
                 <div class="col-5">
-                    <input id="captcha" type="text" class="form-control" placeholder="{{__('blog.captcha_placeholder')}}" name="captcha" required="">
+                    <input id="captcha_f" type="text" class="form-control" placeholder="{{__('blog.captcha_placeholder')}}" name="captcha" required="">
                 </div>
                 <div class="col-7 captcha">
                     <span>{!! captcha_img() !!}</span>

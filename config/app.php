@@ -236,4 +236,6 @@ return [
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
     ],
 
+    'admin_mail' => env('ADMIN_MAIL', 'a-potap@mail.ru'),
+
 ];

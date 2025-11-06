@@ -10,23 +10,28 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class CommentNotify implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * Create a new job instance.
-     */
     public function __construct(
         public Comment $comment
-    ){}
+    ){
+        $this->onQueue('notify');
+    }
 
-    /**
-     * Execute the job.
-     */
     public function handle(): void
     {
-        Mail::to(config('app.admin_mail'))->send(new CommentNew($this->comment));
+        $queueName = $this->job->getQueue();
+        
+        if ($queueName === 'potap.comments.notify_mail') {
+            Mail::to(config('app.admin_mail'))->send(new CommentNew($this->comment));
+        }
+
+        if ($queueName === 'potap.comments.notify_tel') {
+            Log::info('Notify telegram');
+        }
     }
 }

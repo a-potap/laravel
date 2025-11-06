@@ -71,6 +71,25 @@ return [
             'after_commit' => false,
         ],
 
+        'rabbitmq' => [
+            'driver' => 'rabbitmq',
+            'hosts' => [
+                [
+                    'host' => env('MQ_HOST', '127.0.0.1'),
+                    'port' => env('MQ_PORT', 5672),
+                    'user' => env('MQ_USER', 'guest'),
+                    'password' => env('MQ_PASS', 'guest'),
+                    'vhost' => env('MQ_VHOST', '/'),
+                ],
+            ],
+            'options' => [
+                'queue' => [
+                    'exchange' => env('MQ_EXCHANGE', 'potap.comment.ex'),
+                    'exchange_type' => env('MQ_EXCHANGE_TYPE', 'direct'),
+                    'exchange_routing_key' => '%s',
+                ],
+            ],
+        ],
     ],
 
     /*

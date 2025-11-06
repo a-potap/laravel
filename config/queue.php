@@ -71,6 +71,61 @@ return [
             'after_commit' => false,
         ],
 
+        'rabbitmq' => [
+            'driver' => 'rabbitmq',
+
+            'hosts' => [
+                [
+                    'host' => env('MQ_HOST', '127.0.0.1'),
+                    'port' => env('MQ_PORT', 5672),
+                    'user' => env('MQ_USER', 'guest'),
+                    'password' => env('MQ_PASS', 'guest'),
+                    'vhost' => env('MQ_VHOST', '/'),
+                ],
+            ],
+
+            // 'queue' => env('RABBITMQ_QUEUE_DEFAULT', 'potap.comments.validate'),
+
+            'options' => [
+
+                'queue' => [
+                    // ...
+    
+                    'exchange' => env('RABBITMQ_EXCHANGE', 'potap.comment.ex'),
+                    'exchange_type' => env('RABBITMQ_EXCHANGE_TYPE', 'direct'),
+                    'exchange_routing_key' => env('RABBITMQ_EXCHANGE_ROUTING_KEY', '%s'),
+                ],
+ 
+                // 'exchange' => [
+    
+                //     'name' => env('RABBITMQ_EXCHANGE_NAME', 'potap.test.ex'),
+    
+                //     /*
+                //     * Determine if exchange should be created if it does not exist.
+                //     */
+    
+                //     'declare' => env('RABBITMQ_EXCHANGE_DECLARE', true),
+    
+                //     /*
+                //     * Read more about possible values at https://www.rabbitmq.com/tutorials/amqp-concepts.html
+                //     */
+    
+                //     'type' => env('RABBITMQ_EXCHANGE_TYPE', 'direct'),
+                //     'passive' => env('RABBITMQ_EXCHANGE_PASSIVE', false),
+                //     'durable' => env('RABBITMQ_EXCHANGE_DURABLE', true),
+                //     'auto_delete' => env('RABBITMQ_EXCHANGE_AUTODELETE', false),
+                // ],
+            ],
+
+            // 'exchange' => [
+            //     'name' => env('RABBITMQ_EXCHANGE', 'potap.comment.ex'),
+            //     'type' => env('RABBITMQ_EXCHANGE_TYPE', 'direct'), // direct, fanout, topic, headers
+            //     'durable' => true,
+            //     'auto_delete' => false,
+            //     'arguments' => null,
+            //     'exchange_routing_key' => '%s',
+            // ],
+        ],
     ],
 
     /*

@@ -13,20 +13,16 @@ class ValidateComment implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-
     protected array $commentData;
 
-    /**
-     * Create a new job instance.
-     */
+
     public function __construct(array $commentData)
     {
         $this->commentData = $commentData;
+        $this->onQueue('validation');
     }
 
-    /**
-     * Execute the job.
-     */
+
     public function handle(): void
     {
         if (!empty($this->commentData['text']) && strip_tags($this->commentData['text']) === $this->commentData['text']) {

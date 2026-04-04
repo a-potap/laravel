@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+Broadcast::channel('chat-room.{roomId}', function ($user, $roomId) {
+    $chatRoom = \App\Models\ChatRoom::find($roomId);
+
+    if (!$chatRoom) {
+        return false;
+    }
+
+    return $chatRoom->hasParticipant($user);
+});

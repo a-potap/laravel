@@ -41,4 +41,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function chatRooms()
+    {
+        return $this->belongsToMany(ChatRoom::class, 'chat_room_user')
+                    ->withPivot(['joined_at', 'last_read_at'])
+                    ->withTimestamps();
+    }
+
+    public function chatMessages()
+    {
+        return $this->hasMany(ChatMessage::class);
+    }
 }

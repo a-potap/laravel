@@ -14,6 +14,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Authentication routes
+Route::controller(\App\Http\Controllers\Api\AuthController::class)->prefix('auth')->group(function () {
+    Route::post('/register', 'register');
+    Route::post('/login', 'login');
+    Route::post('/logout', 'logout')->middleware('auth:sanctum');
+    Route::get('/me', 'me')->middleware('auth:sanctum');
+});
+
+// Chat routes (all require auth:sanctum)
+Route::middleware('auth:sanctum')->prefix('chat')->group(function () {
+    Route::controller(\App\Http\Controllers\Api\ChatRoomController::class)->group(function () {
+        Route::get('/rooms', 'index');
+        Route::post('/rooms', 'store');
+        Route::get('/rooms/{id}', 'show');
+        Route::post('/rooms/private', 'getOrCreatePrivate');
+        Route::post('/rooms/{id}/participants', 'addParticipants');
+        Route::delete('/rooms/{id}/participants/{userId}', 'removeParticipant');
+        Route::post('/rooms/{id}/read', 'markAsRead');
+    });
+
+    Route::controller(\App\Http\Controllers\Api\ChatMessageController::class)->group(function () {
+        Route::get('/rooms/{roomId}/messages', 'index');
+        Route::post('/rooms/{roomId}/messages', 'store')->middleware('throttle:messages');
+    });
+});
+
 Route::controller(\App\Http\Controllers\Api\NewsController::class)->group(function () {
     Route::get('/news', 'index');
     Route::get('/news/{id}', 'show');

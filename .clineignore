@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+/vendor
+**/node_modules/
+
+# Build outputs
+/public/hot
+/public/storage
+/public/albums
+/public/css
+/public/images
+/public/js
+/storage/*.key
+/.idea
+/.vscode
+/bootstrap/cache
+
+
+# Testing artifacts
+/coverage/
+
+# Environment variables
+.env
+.env.*
+
+# Large data files
+*.csv
+*.xlsx
+*.sqlite
+
+# Generated/minified code
+*.min.js
+*.map

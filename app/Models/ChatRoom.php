@@ -5,6 +5,49 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @OA\Schema(
+ *     title="ChatRoom",
+ *     description="Represents a chat room",
+ *     @OA\Property(
+ *         property="id",
+ *         type="integer",
+ *         description="The unique identifier of the chat room"
+ *     ),
+ *     @OA\Property(
+ *         property="type",
+ *         type="string",
+ *         description="The type of the chat room (e.g., 'public', 'private')"
+ *     ),
+ *     @OA\Property(
+ *         property="name",
+ *         type="string",
+ *         description="The name of the chat room"
+ *     ),
+ *     @OA\Property(
+ *         property="description",
+ *         type="string",
+ *         description="The description of the chat room"
+ *     ),
+ *     @OA\Property(
+ *         property="created_by",
+ *         type="integer",
+ *         description="The ID of the user who created the chat room"
+ *     ),
+ *     @OA\Property(
+ *         property="created_at",
+ *         type="string",
+ *         format="date-time",
+ *         description="The date and time the chat room was created"
+ *     ),
+ *     @OA\Property(
+ *         property="updated_at",
+ *         type="string",
+ *         format="date-time",
+ *         description="The date and time the chat room was last updated"
+ *     )
+ * )
+ */
 class ChatRoom extends Model
 {
     use HasFactory;

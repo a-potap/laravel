@@ -27,8 +27,7 @@ This is a comprehensive personal portfolio website built on Laravel that serves 
 The project addresses the need for a unified digital presence that combines:
 1. Professional portfolio showcasing skills and experience
 2. Technical blog for knowledge sharing
-3. Community engagement through comments and chat
-4. Media sharing for visual content
-5. Modern web application with responsive design
+3. Media sharing for visual content
+4. Modern web application with responsive design
 
 This eliminates the need for multiple separate platforms and provides a cohesive user experience.

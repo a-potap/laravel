@@ -14,30 +14,30 @@ use Illuminate\Http\Response;
 
 class ChatRoomController extends Controller
 {
-    /**
-     * @OA\Get(
-     *      path="/chat-rooms",
-     *      operationId="getChatRoomsList",
-     *      tags={"Chat Rooms"},
-     *      summary="Get list of chat rooms",
-     *      description="Returns list of chat rooms for authenticated user",
-     *      security={{"sanctum": {}}},
-     *      @OA\Parameter(
-     *          name="page",
-     *          description="page number",
-     *          required=false,
-     *          in="query",
-     *          @OA\Schema(
-     *              type="integer"
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/ChatRoomCollection")
-     *       )
-     * )
-     */
+/**
+ * @OA\Get(
+ *      path="/chat-rooms",
+ *      operationId="getChatRoomsList",
+ *      tags={"Chat Rooms"},
+ *      summary="Get list of chat rooms",
+ *      description="Returns list of chat rooms for authenticated user",
+ *      security={{"sanctum": {}}},
+ *      @OA\Parameter(
+ *          name="page",
+ *          description="page number",
+ *          required=false,
+ *          in="query",
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
+ *      ),
+ *      @OA\Response(
+ *          response=200,
+ *          description="Successful operation",
+ *          @OA\JsonContent(ref="#/components/schemas/ChatRoomCollection")
+ *       )
+ * )
+ */
     public function index()
     {
         $user = auth()->user();
@@ -74,7 +74,7 @@ class ChatRoomController extends Controller
      *      @OA\Response(
      *          response=403,
      *          description="Forbidden - insufficient permissions",
-     *          @OA\JsonContent(ref="#/components/schemas/ForbiddenException")
+     *          @OA\Response(response=403,    description="Forbidden - insufficient permissions")
      *      )
      * )
      */
@@ -126,7 +126,7 @@ class ChatRoomController extends Controller
      *      @OA\Response(
      *          response=404,
      *          description="Not found",
-     *          @OA\JsonContent(ref="#/components/schemas/NotFoundException")
+     *          @OA\Response(response=404, description="Not found")
      *      ),
      *      @OA\Response(
      *          response=403,
@@ -268,7 +268,10 @@ class ChatRoomController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/SuccessResponse")
+     *          @OA\Response(
+    response=200,
+    description="Successful operation"
+)
      *       ),
      *      @OA\Response(
      *          response=403,

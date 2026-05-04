@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "https://a-potap.ru/api",
+            "url": "http://a-potap.test/api",
             "description": "A_POTAP API Server"
         }
     ],
@@ -87,12 +87,406 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/NotFoundException"
+                                    "$ref": "#/components/schemas/BlogResource"
                                 }
                             }
                         }
                     }
                 }
+            }
+        },
+        "/chat-rooms": {
+            "get": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Get list of chat rooms",
+                "description": "Returns list of chat rooms for authenticated user",
+                "operationId": "getChatRoomsList",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ChatRoomCollection"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Create new chat room",
+                "description": "Creates a new group chat room with specified participants",
+                "operationId": "createChatRoom",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "participant_ids"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Project Team"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Discussion about project tasks"
+                                    },
+                                    "participant_ids": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        },
+                                        "example": "[1,2,3]"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ChatRoomResource"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden - insufficient permissions"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/chat-rooms/{id}": {
+            "get": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Get chat room information",
+                "description": "Returns chat room data by ID",
+                "operationId": "getChatRoomById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Chat room id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ChatRoomResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "403": {
+                        "description": "Forbidden - insufficient permissions",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ForbiddenException"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/chat-rooms/private": {
+            "get": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Get or create private chat",
+                "description": "Returns existing private chat or creates new one for two users",
+                "operationId": "getOrCreatePrivateChat",
+                "parameters": [
+                    {
+                        "name": "recipient_id",
+                        "in": "query",
+                        "description": "Recipient user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ChatRoomResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundException"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/chat-rooms/{id}/participants": {
+            "post": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Add participants to chat room",
+                "description": "Adds specified users to chat room participants",
+                "operationId": "addParticipantsToChatRoom",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Chat room id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_ids"
+                                ],
+                                "properties": {
+                                    "user_ids": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        },
+                                        "example": "[1,2,3]"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ChatRoomResource"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden - insufficient permissions",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ForbiddenException"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundException"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/chat-rooms/{id}/participants/{user_id}": {
+            "delete": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Remove participant from chat room",
+                "description": "Removes specified user from chat room participants",
+                "operationId": "removeParticipantFromChatRoom",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Chat room id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "User id to remove",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "403": {
+                        "description": "Forbidden - insufficient permissions",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ForbiddenException"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundException"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/chat-rooms/{id}/read": {
+            "put": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Mark chat room messages as read",
+                "description": "Marks all messages in chat room as read for current user",
+                "operationId": "markChatRoomAsRead",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Chat room id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden - insufficient permissions",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ForbiddenException"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundException"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/blog/{id}/comments": {
@@ -359,6 +753,30 @@
                     "name": "NotFoundException"
                 }
             },
+            "ForbiddenException": {
+                "title": "ForbiddenException",
+                "description": "Forbidden Exception data",
+                "properties": {
+                    "message": {
+                        "title": "Message",
+                        "description": "Error text",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Insufficient permissions"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ForbiddenException"
+                }
+            },
+            "SuccessResponse": {
+                "title": "SuccessResponse",
+                "description": "Success",
+                "xml": {
+                    "name": "SuccessResponse"
+                }
+            },
             "StoreCommentRequest": {
                 "title": "Store Comment request",
                 "description": "Store comment request body data",
@@ -401,6 +819,113 @@
                 "xml": {
                     "name": "BlogResource"
                 }
+            },
+            "ChatMessageResource": {
+                "title": "ChatMessageResource",
+                "description": "Represents a chat message",
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of the chat message",
+                        "type": "integer"
+                    },
+                    "chat_room_id": {
+                        "description": "The ID of the chat room the message belongs to",
+                        "type": "integer"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserResource"
+                    },
+                    "user_id": {
+                        "description": "The ID of the user who sent the message",
+                        "type": "integer"
+                    },
+                    "message": {
+                        "description": "The content of the chat message",
+                        "type": "string"
+                    },
+                    "date": {
+                        "description": "The date and time the message was sent",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "The date and time the message was last updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "ChatRoomCollection": {
+                "title": "ChatRoomCollection",
+                "description": "Paginated collection of chat rooms",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ChatRoomResource"
+                        }
+                    },
+                    "links": {
+                        "description": "Pagination links",
+                        "type": "object"
+                    },
+                    "meta": {
+                        "description": "Pagination metadata",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "ChatRoomResource": {
+                "title": "ChatRoomResource",
+                "description": "Represents a chat room and its associated data",
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of the chat room",
+                        "type": "integer"
+                    },
+                    "type": {
+                        "description": "The type of the chat room",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the chat room",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The description of the chat room",
+                        "type": "string"
+                    },
+                    "created_by": {
+                        "description": "The ID of the user who created the chat room",
+                        "type": "integer"
+                    },
+                    "date": {
+                        "description": "The date and time the chat room was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "The date and time the chat room was last updated",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "participants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/UserResource"
+                        }
+                    },
+                    "latest_message": {
+                        "$ref": "#/components/schemas/ChatMessageResource"
+                    },
+                    "unread_count": {
+                        "description": "The number of unread messages for the authenticated user",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
             },
             "CommentResource": {
                 "title": "Blog Comments Resource",
@@ -456,6 +981,25 @@
                     "name": "PhotoResource"
                 }
             },
+            "UserResource": {
+                "title": "UserResource",
+                "description": "Represents a user",
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of the user",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "The name of the user",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The email address of the user",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
             "Blog": {
                 "title": "Blog",
                 "description": "Blog model",
@@ -503,6 +1047,43 @@
                 "xml": {
                     "name": "Blog"
                 }
+            },
+            "ChatRoom": {
+                "title": "ChatRoom",
+                "description": "Represents a chat room",
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of the chat room",
+                        "type": "integer"
+                    },
+                    "type": {
+                        "description": "The type of the chat room (e.g., 'public', 'private')",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the chat room",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The description of the chat room",
+                        "type": "string"
+                    },
+                    "created_by": {
+                        "description": "The ID of the user who created the chat room",
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "description": "The date and time the chat room was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "The date and time the chat room was last updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
             },
             "Comment": {
                 "title": "Blog comments",
@@ -634,8 +1215,20 @@
     },
     "tags": [
         {
-            "name": "A-POTAP BLOG",
-            "description": "API Endpoints of "
+            "name": "Blog",
+            "description": "Blog"
+        },
+        {
+            "name": "Chat Rooms",
+            "description": "Chat Rooms"
+        },
+        {
+            "name": "News",
+            "description": "News"
+        },
+        {
+            "name": "Photos",
+            "description": "Photos"
         }
     ]
 }

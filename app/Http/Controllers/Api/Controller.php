@@ -61,6 +61,14 @@ use Illuminate\Routing\Controller as BaseController;
  *          example="Insufficient permissions",
  *          type="string"
  *      )
+ * ),
+ * @OA\Schema (
+ *     schema="SuccessResponse",
+ *     title="SuccessResponse",
+ *     description="Success",
+ *     @OA\Xml(
+ *         name="SuccessResponse"
+ *     )
  * )
  * )
  */

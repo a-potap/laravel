@@ -4,10 +4,13 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\Blog;
-use Database\Factories\BlogFactory;
+use App\Models\Comment as ModelsComment;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class BlogControllerTest extends TestCase
 {
+    use RefreshDatabase; 
+
     public function test_the_blog_index_endpoint_returns_a_successful_response(): void
     {
         Blog::factory()->count(5)->create();
@@ -82,6 +85,10 @@ class BlogControllerTest extends TestCase
     {
         $blog = Blog::factory()->create();
 
+        ModelsComment::factory()->count(5)->create([
+            'blog_id' => $blog->id
+        ]);
+
         $response = $this->getJson("/api/blog/{$blog->id}");
 
         $response->assertStatus(200)
@@ -92,8 +99,16 @@ class BlogControllerTest extends TestCase
                              'title',
                              'title_en',
                              'text',
-                             'text_en'
-                     ]
+                             'text_en',
+                             'comments' => [
+                                '*' => [
+                                    'id',
+                                    'user',
+                                    'date',
+                                    'text'
+                                ]
+                            ]
+                        ]
                  ])
                  ->assertJson(['id' => $blog->id]);
     }

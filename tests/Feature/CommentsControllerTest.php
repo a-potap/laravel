@@ -224,8 +224,6 @@ class CommentsControllerTest extends TestCase
 
     public function test_store_throttles_requests(): void
     {
-        $this->withoutExceptionHandling();
-
         $data = [
             'iduser' => 'TestUser',
             'text' => 'Test comment',

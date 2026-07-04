@@ -110,7 +110,8 @@ class BlogControllerTest extends TestCase
                             ]
                         ]
                  ])
-                 ->assertJson(['id' => $blog->id]);
+                ->assertJsonCount(5, 'data.comments')
+                ->assertJson(['data' => ['id' => $blog->id]]);
     }
 
     public function test_the_blog_show_endpoint_returns_a_404_response_when_the_blog_post_does_not_exist(): void

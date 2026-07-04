@@ -65,7 +65,7 @@ class BlogController extends Controller
      *      )
      * )
      */
-    public function show($id)
+    public function show(int $id)
     {
         return (new BlogResource(Blog::findOrFail($id)))->withExtra();
     }

@@ -66,6 +66,7 @@ class Blog extends Model
     protected $table = 'blog';
 
     const CREATED_AT = 'date';
+    const UPDATED_AT = null;
 
     public function comments()
     {

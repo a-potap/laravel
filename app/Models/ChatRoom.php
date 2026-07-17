@@ -54,8 +54,6 @@ class ChatRoom extends Model
 
     protected $table = 'chat_rooms';
 
-    const CREATED_AT = 'date';
-
     protected $fillable = [
         'type',
         'name',
@@ -71,8 +69,7 @@ class ChatRoom extends Model
     public function participants()
     {
         return $this->belongsToMany(User::class, 'chat_room_user')
-                    ->withPivot(['joined_at', 'last_read_at'])
-                    ->withTimestamps();
+                    ->withPivot(['joined_at', 'last_read_at']);
     }
 
     public function messages()

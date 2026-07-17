@@ -178,6 +178,12 @@ class ChatRoomController extends Controller
         $user = auth()->user();
         $recipient = User::findOrFail($request->recipient_id);
 
+        if ($user->id === $recipient->id) {
+            abort(response()->json([
+                'message' => 'Cannot create a private chat with yourself'
+            ], Response::HTTP_NOT_FOUND));
+        }
+
         $chatRoom = ChatRoom::getOrCreatePrivateChat($user, $recipient);
 
         return new ChatRoomResource($chatRoom->load('participants'));

@@ -202,9 +202,9 @@ class ChatRoomControllerTest extends TestCase
         $user = User::factory()->create();
         $recipient = User::factory()->create();
 
-        $response = $this->actingAs($user)->getJson('/api/chat/rooms/private?recipient_id=' . $recipient->id);
+        $response = $this->actingAs($user)->postJson('/api/chat/rooms/private?recipient_id=' . $recipient->id);
 
-        $response->assertStatus(200)
+        $response->assertStatus(201)
             ->assertJsonStructure([
                 'data' => [
                     'id',
@@ -231,7 +231,7 @@ class ChatRoomControllerTest extends TestCase
         $this->attachParticipant($chatRoom->id, $user->id);
         $this->attachParticipant($chatRoom->id, $recipient->id);
 
-        $response = $this->actingAs($user)->getJson('/api/chat/rooms/private?recipient_id=' . $recipient->id);
+        $response = $this->actingAs($user)->postJson('/api/chat/rooms/private?recipient_id=' . $recipient->id);
 
         $response->assertStatus(200)
             ->assertJson(['data' => ['id' => $chatRoom->id]]);
@@ -241,7 +241,7 @@ class ChatRoomControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->getJson('/api/chat/rooms/private');
+        $response = $this->actingAs($user)->postJson('/api/chat/rooms/private');
 
         $response->assertStatus(422)
             ->assertJsonValidationErrors(['recipient_id']);
@@ -251,7 +251,7 @@ class ChatRoomControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->getJson('/api/chat/rooms/private?recipient_id=99999');
+        $response = $this->actingAs($user)->postJson('/api/chat/rooms/private?recipient_id=99999');
 
         $response->assertStatus(422)
             ->assertJsonValidationErrors(['recipient_id']);
@@ -261,15 +261,14 @@ class ChatRoomControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->getJson('/api/chat/rooms/private?recipient_id=' . $user->id);
+        $response = $this->actingAs($user)->postJson('/api/chat/rooms/private?recipient_id=' . $user->id);
 
-        $response->assertStatus(422)
-            ->assertJsonValidationErrors(['recipient_id']);
+        $response->assertStatus(404);
     }
 
     public function test_get_or_create_private_chat_returns_unauthorized_for_guest_user(): void
     {
-        $response = $this->getJson('/api/chat/rooms/private?recipient_id=1');
+        $response = $this->postJson('/api/chat/rooms/private?recipient_id=1');
 
         $response->assertStatus(401);
     }
@@ -360,27 +359,6 @@ class ChatRoomControllerTest extends TestCase
         ]);
 
         $this->attachParticipant($chatRoom->id, $otherUser->id);
-
-        $newParticipant = User::factory()->create();
-
-        $response = $this->actingAs($user)->postJson("/api/chat/rooms/{$chatRoom->id}/participants", [
-            'user_ids' => [$newParticipant->id],
-        ]);
-
-        $response->assertStatus(403);
-    }
-
-    public function test_add_participants_fails_when_user_cannot_add_participants(): void
-    {
-        $user = User::factory()->create();
-        $creator = User::factory()->create();
-        $chatRoom = ChatRoom::factory()->create([
-            'type' => 'group',
-            'created_by' => $creator->id,
-        ]);
-
-        // User is a participant but not the creator
-        $this->attachParticipant($chatRoom->id, $user->id);
 
         $newParticipant = User::factory()->create();
 

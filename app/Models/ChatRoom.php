@@ -62,7 +62,7 @@ class ChatRoom extends Model
     ];
 
     protected $casts = [
-        'date' => 'datetime',
+        'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
 

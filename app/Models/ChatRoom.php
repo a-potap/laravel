@@ -95,10 +95,10 @@ class ChatRoom extends Model
         $existingChat = static::where('type', 'private')
             ->whereHas('participants', function ($query) use ($userIds) {
                 $query->whereIn('user_id', $userIds);
-            })
+            }, '=', count($userIds))
+            ->has('participants', '=', count($userIds))
             ->withCount('participants')
-            ->having('participants_count', '=', 2)
-            ->first();
+            ->first();    
 
         if ($existingChat) {
             $existingParticipantIds = $existingChat->participants->pluck('id')->sort()->values()->toArray();

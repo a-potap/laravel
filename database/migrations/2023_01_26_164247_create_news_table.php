@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateNewsTable extends Migration
@@ -17,7 +18,7 @@ class CreateNewsTable extends Migration
             $table->id();
             $table->char('text', 200);
             $table->char('text_en', 200);
-            $table->timestamps();
+            $table->date('date')->default(DB::raw('(CURRENT_DATE)'));
         });
     }
 

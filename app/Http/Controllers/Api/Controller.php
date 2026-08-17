@@ -23,7 +23,6 @@ use Illuminate\Routing\Controller as BaseController;
  *      url=L5_SWAGGER_CONST_HOST,
  *      description="A_POTAP API Server"
  * )
-
  *
  * @OA\Tag(
  *     name="A-POTAP BLOG",
@@ -46,11 +45,32 @@ use Illuminate\Routing\Controller as BaseController;
  *          example="Record not found.",
  *          type="string"
  *      )
+ * ),
+ * @OA\Schema (
+ *     schema="ForbiddenException",
+ *     title="ForbiddenException",
+ *     description="Forbidden Exception data",
+ *     @OA\Xml(
+ *         name="ForbiddenException"
+ *     ) ,
+ *     @OA\Property(
+ *          property="message",
+ *          title="Message",
+ *          description="Error text",
+ *          format="string",
+ *          example="Insufficient permissions",
+ *          type="string"
+ *      )
+ * ),
+ * @OA\Schema (
+ *     schema="SuccessResponse",
+ *     title="SuccessResponse",
+ *     description="Success",
+ *     @OA\Xml(
+ *         name="SuccessResponse"
+ *     )
  * )
  * )
- *
- *
-
  */
 class Controller extends BaseController
 {

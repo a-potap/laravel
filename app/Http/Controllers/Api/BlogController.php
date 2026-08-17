@@ -61,11 +61,11 @@ class BlogController extends Controller
      *      @OA\Response(
      *          response=404,
      *          description="Not found",
-     *          @OA\JsonContent(ref="#/components/schemas/NotFoundException")
+     *          @OA\JsonContent(ref="#/components/schemas/BlogResource")
      *      )
      * )
      */
-    public function show($id)
+    public function show(int $id)
     {
         return (new BlogResource(Blog::findOrFail($id)))->withExtra();
     }

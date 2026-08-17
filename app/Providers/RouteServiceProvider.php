@@ -69,5 +69,8 @@ class RouteServiceProvider extends ServiceProvider
                 }),
             ];
         });
+        RateLimiter::for('messages', function (Request $request) {
+            return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
+        });
     }
 }

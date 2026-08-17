@@ -1,0 +1,1 @@
+Always use context7 for any tasks related to libraries: installation, imports, laravel, twitter bootstrap, reactjs.

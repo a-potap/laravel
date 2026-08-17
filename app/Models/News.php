@@ -50,6 +50,7 @@ class News extends Model
     use HasFactory;
 
     const CREATED_AT = 'date';
+    const UPDATED_AT = null;
 
     public function getLocalizedText() {
         if(App::isLocale('en') && $this->text_en) {

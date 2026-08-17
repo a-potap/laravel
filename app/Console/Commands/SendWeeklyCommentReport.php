@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Mail\WeeklyCommentReport;
-use App\Models\Blog;
 use App\Models\Comment;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
@@ -32,17 +31,17 @@ class SendWeeklyCommentReport extends Command
         $startOfWeek = now()->subWeek()->startOfWeek()->toDateString();
         $endOfWeek = now()->subWeek()->endOfWeek()->toDateString();
 
-        $commentsByBlog = Comment::whereBetween('date', [$startOfWeek, $endOfWeek])
-            ->selectRaw('blog_id, COUNT(*) as comments_count')
-            ->groupBy('blog_id')
+        $commentsByBlog = Comment::leftJoin('blog', 'blog_coments.blog_id', '=', 'blog.id')
+            ->whereBetween('blog_coments.date', [$startOfWeek, $endOfWeek])
+            ->selectRaw('blog.id as blog_id, blog.title, COUNT(*) as comments_count')
+            ->groupBy('blog.id', 'blog.title', 'blog.title_en')
             ->get();
 
         $report = [];
         foreach ($commentsByBlog as $item) {
-            $blog = Blog::find($item->blog_id);
             $report[] = [
                 'blog_id' => $item->blog_id,
-                'blog_title' => $blog ? $blog->getLocalizedTitle() : 'Unknown Post',
+                'blog_title' => $item->title,
                 'comments_count' => $item->comments_count,
             ];
         }

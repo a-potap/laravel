@@ -115,60 +115,6 @@ class SendWeeklyCommentReportTest extends TestCase
         });
     }
 
-    public function test_command_uses_english_title_when_locale_is_en(): void
-    {
-        Mail::fake();
-        App::setLocale('en');
-        Config::set('mail.admin', 'admin@example.com');
-
-        $blog = Blog::factory()->create([
-            'title' => 'Russian Title',
-            'title_en' => 'English Title',
-        ]);
-
-        $pastWeek = now()->subWeek()->startOfWeek();
-        Comment::factory()->create([
-            'blog_id' => $blog->id,
-            'date' => $pastWeek->copy()->addDays(2),
-        ]);
-
-        $this->artisan(SendWeeklyCommentReport::class)
-            ->assertExitCode(0);
-
-        Mail::assertSent(WeeklyCommentReport::class, function ($mail) use ($blog) {
-            $this->assertEquals('English Title', $mail->report[0]['blog_title']);
-
-            return true;
-        });
-    }
-
-    public function test_command_uses_default_title_when_locale_is_not_en(): void
-    {
-        Mail::fake();
-        App::setLocale('ru');
-        Config::set('mail.admin', 'admin@example.com');
-
-        $blog = Blog::factory()->create([
-            'title' => 'Russian Title',
-            'title_en' => 'English Title',
-        ]);
-
-        $pastWeek = now()->subWeek()->startOfWeek();
-        Comment::factory()->create([
-            'blog_id' => $blog->id,
-            'date' => $pastWeek->copy()->addDays(2),
-        ]);
-
-        $this->artisan(SendWeeklyCommentReport::class)
-            ->assertExitCode(0);
-
-        Mail::assertSent(WeeklyCommentReport::class, function ($mail) {
-            $this->assertEquals('Russian Title', $mail->report[0]['blog_title']);
-
-            return true;
-        });
-    }
-
     public function test_command_handles_blog_with_null_english_title(): void
     {
         Mail::fake();

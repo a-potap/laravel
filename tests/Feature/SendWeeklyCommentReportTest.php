@@ -17,12 +17,17 @@ class SendWeeklyCommentReportTest extends TestCase
     public function test_command_returns_success_when_no_comments_exist(): void
     {
         Mail::fake();
+        Config::set('mail.admin', 'admin@example.com');
 
         $this->artisan(SendWeeklyCommentReport::class)
-            ->expectsOutput('No comments found for the past week.')
+            ->expectsOutput('Weekly comment report sent to admin. Total comments: 0')
             ->assertExitCode(0);
 
-        Mail::assertNothingSent();
+        Mail::assertSent(WeeklyCommentReport::class, function ($mail) {
+            return $mail->hasTo('admin@example.com')
+                && empty($mail->report)
+                && $mail->totalComments === 0;
+        });
     }
 
     public function test_command_sends_email_when_comments_exist(): void
@@ -220,7 +225,7 @@ class SendWeeklyCommentReportTest extends TestCase
         });
     }
 
-    public function test_command_does_not_send_email_when_no_recent_comments(): void
+    public function test_command_sends_email_even_when_no_recent_comments(): void
     {
         Mail::fake();
         Config::set('mail.admin', 'admin@example.com');
@@ -230,10 +235,14 @@ class SendWeeklyCommentReportTest extends TestCase
         ]);
 
         $this->artisan(SendWeeklyCommentReport::class)
-            ->expectsOutput('No comments found for the past week.')
+            ->expectsOutput('Weekly comment report sent to admin. Total comments: 0')
             ->assertExitCode(0);
 
-        Mail::assertNothingSent();
+        Mail::assertSent(WeeklyCommentReport::class, function ($mail) {
+            return $mail->hasTo('admin@example.com')
+                && empty($mail->report)
+                && $mail->totalComments === 0;
+        });
     }
 
     public function test_command_aggregates_comments_per_blog_correctly(): void

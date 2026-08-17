@@ -20,6 +20,7 @@ class WeeklyCommentReport extends Mailable
         public array $report,
         public string $periodStart,
         public string $periodEnd,
+        public int $totalComments = 0,
     ) {}
 
     /**

@@ -47,11 +47,6 @@ class SendWeeklyCommentReport extends Command
             ];
         }
 
-        if (empty($report)) {
-            $this->info('No comments found for the past week.');
-            return Command::SUCCESS;
-        }
-
         $totalComments = array_sum(array_column($report, 'comments_count'));
 
         Mail::to(config('mail.admin'))
@@ -59,6 +54,7 @@ class SendWeeklyCommentReport extends Command
                 report: $report,
                 periodStart: $startOfWeek,
                 periodEnd: $endOfWeek,
+                totalComments: $totalComments,
             ));
 
         $this->info("Weekly comment report sent to admin. Total comments: {$totalComments}");
